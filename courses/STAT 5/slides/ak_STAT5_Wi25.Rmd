@@ -1,0 +1,12 @@
+---
+title: "ak_STAT5_Wi25"
+output: html_document
+---
+
+Below is the link to Aubree Krager's Winter 2025 STAT 5 section winter themed slides.
+
+https://drive.google.com/drive/folders/1nrQHxc14W8k0Yf7C7_ie86S_BHKQ8IsD?usp=sharing 
+
+All files in this folder are named using the course name, section, session number, and session date. I found this helped me stay organized when I was running multiple sections. 
+
+The information in the slides are based on Yunan Wang's STAT 5 course. On most slides the top left corner has the specific slide number from what was posted in class. My students found this helpful since I did not share my slides with them because the attendance link is at the end. 
