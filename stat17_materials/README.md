@@ -1,7 +1,3 @@
-# TA Resources
-
-Welcome! 
-
 # STAT 17 Discussion Materials
 
 Author: Xiao
