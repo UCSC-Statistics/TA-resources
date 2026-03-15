@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{a4wide}
+\usepackage{enumitem}
+
+\title{Stat 17 Week 2}
+\author{Xiao Zhang}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Part I: Data, Variables, and Sampling}
+
+\begin{itemize}
+
+\item \textbf{Statistics and Data}
+\begin{itemize}
+  \item Statistics is the science of collecting, organizing, analyzing, and interpreting data
+  \item Data consist of observations on individuals or objects
+\end{itemize}
+
+\item \textbf{Population, Sample, and Parameters}
+\begin{itemize}
+  \item \textbf{Population}: the entire group of interest
+  \item \textbf{Sample}: a subset of the population actually observed
+  \item A \textbf{parameter} describes a population (usually unknown)
+  \item A \textbf{statistic} summarizes a sample and estimates a parameter
+\end{itemize}
+
+\item \textbf{Types of Variables}
+\begin{itemize}
+  \item \textbf{Categorical/qualitative} variables place individuals into categories
+  \begin{itemize}
+    \item Nominal: categories without order
+    \item Ordinal: categories with a natural order
+    \item Binary: two possible outcomes
+  \end{itemize}
+  \item \textbf{Quantitative} variables take numerical values
+  \begin{itemize}
+    \item Discrete: result of counting
+    \item Continuous: result of measuring
+  \end{itemize}
+\end{itemize}
+
+\item \textbf{Sampling Methods}
+\begin{itemize}
+  \item \textbf{Simple random sampling}: each individual has an equal chance of selection
+  \item \textbf{Systematic sampling}: select every $k$th individual from a list
+  \item \textbf{Stratified sampling}: divide population into groups, then randomly sample from each group
+  \item \textbf{Cluster sampling}: randomly select groups and include all individuals within them
+  \item \textbf{Convenience sampling}: easy to obtain but often biased
+\end{itemize}
+
+\item \textbf{Bias and Ethics}
+\begin{itemize}
+  \item Bias occurs when the sample is not representative of the population
+  \item Common sources include sampling bias, response bias, and measurement bias
+  \item Ethical data collection requires informed consent, privacy protection, and avoiding harm
+\end{itemize}
+
+\end{itemize}
+
+\section*{Part II: Descriptive Statistics and Data Visualization}
+
+\begin{itemize}
+
+\item \textbf{Why We Summarize Data}
+\begin{itemize}
+  \item Large datasets are difficult to interpret without summaries
+  \item Numerical and graphical summaries reveal patterns and unusual features
+\end{itemize}
+
+\item \textbf{Displaying Categorical Data}
+\begin{itemize}
+  \item Bar charts compare frequencies or relative frequencies
+  \item Pie charts show proportions of a whole (best with few categories)
+\end{itemize}
+
+\item \textbf{Displaying Quantitative Data}
+\begin{itemize}
+  \item Histograms display the distribution of numerical data
+  \item Useful for identifying shape, center, spread, and outliers
+\end{itemize}
+
+\item \textbf{Describing Distribution Shape}
+\begin{itemize}
+  \item Symmetric vs.\ skewed distributions
+  \item Right-skewed: long tail to the right
+  \item Left-skewed: long tail to the left
+  \item Outliers, gaps, and clusters may appear
+\end{itemize}
+
+\item \textbf{Measures of Center}
+\begin{itemize}
+  \item Mean: arithmetic average
+  \[
+  \bar{x} = \frac{1}{n}\sum_{i=1}^n x_i
+  \]
+  \item Median: middle value of ordered data
+  \item Mode: most frequent value (especially for categorical data)
+\end{itemize}
+
+\item \textbf{Mean vs.\ Median}
+\begin{itemize}
+  \item Symmetric distribution: mean $\approx$ median
+  \item Right-skewed: mean $>$ median
+  \item Left-skewed: mean $<$ median
+  \item Median is more resistant to outliers than the mean
+\end{itemize}
+
+\item \textbf{Percentiles and Quartiles}
+\begin{itemize}
+  \item The $p$th percentile is the value below which $p\%$ of observations fall
+  \item The median is the 50th percentile
+  \item Quartiles divide ordered data into four equal parts:
+  \begin{itemize}
+    \item $Q_1$: 25th percentile
+    \item $Q_2$: 50th percentile (median)
+    \item $Q_3$: 75th percentile
+  \end{itemize}
+\end{itemize}
+
+\item \textbf{Interquartile Range (IQR)}
+\begin{itemize}
+  \item The IQR measures the spread of the middle 50\% of the data
+  \[
+  \text{IQR} = Q_3 - Q_1
+  \]
+  \item The IQR is resistant to outliers
+\end{itemize}
+
+\item \textbf{Outliers and the 1.5$\times$IQR Rule}
+\begin{itemize}
+  \item Lower fence: $Q_1 - 1.5(\text{IQR})$
+  \item Upper fence: $Q_3 + 1.5(\text{IQR})$
+  \item Observations outside these fences are considered outliers
+\end{itemize}
+
+\item \textbf{Measures of Spread}
+\begin{itemize}
+  \item Range: maximum $-$ minimum
+  \item Variance and standard deviation measure overall variability
+  \[
+  s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2,
+  \qquad
+  s = \sqrt{s^2}
+  \]
+  \item Standard deviation has the same units as the original data
+\end{itemize}
+
+\item \textbf{The Complete Description of a Distribution}
+\begin{itemize}
+  \item A dataset should be described using:
+  \begin{itemize}
+    \item Shape
+    \item Center
+    \item Spread
+  \end{itemize}
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
