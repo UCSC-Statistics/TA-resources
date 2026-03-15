@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+
+\title{Stat 17 Week 3}
+\author{Xiao Zhang}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Probability Topics — Part 1: Basics \& Counting}
+
+\begin{itemize}
+  \item \textbf{What is Probability}
+  \begin{itemize}
+    \item Probability describes the long-run proportion of times an outcome occurs
+    \item Probabilities are always between 0 and 1
+    \begin{itemize}
+      \item $P=0$: impossible event
+      \item $P=1$: certain event
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Small Samples vs Large Samples}
+  \begin{itemize}
+    \item Results from small samples can be misleading
+    \item Short-term randomness does not reflect long-term behavior
+  \end{itemize}
+
+  \item \textbf{Law of Large Numbers}
+  \begin{itemize}
+    \item As the number of trials increases, observed proportions approach theoretical probabilities
+    \item Early imbalances tend to stabilize over time
+  \end{itemize}
+
+  \item \textbf{Independence and the Gambler's Fallacy}
+  \begin{itemize}
+    \item Trials are independent if previous outcomes do not affect future outcomes
+    \item Past results do not change future probabilities
+    \item The belief that an outcome is ``due'' is incorrect
+  \end{itemize}
+
+  \item \textbf{Probability Models and Sample Space}
+  \begin{itemize}
+    \item A probability model consists of:
+    \begin{itemize}
+      \item a list of all possible outcomes
+      \item a probability assigned to each outcome
+    \end{itemize}
+    \item The sample space $S$ is the set of all possible outcomes
+  \end{itemize}
+
+  \item \textbf{Multi-step Experiments}
+  \begin{itemize}
+    \item Experiments with multiple stages can be represented using tree diagrams
+    \item Example: two coin tosses $\rightarrow \{HH, HT, TH, TT\}$
+  \end{itemize}
+
+  \item \textbf{With Replacement vs Without Replacement}
+  \begin{itemize}
+    \item With replacement: the number of possible outcomes remains the same each trial
+    \item Without replacement: the number of possible outcomes decreases after each trial
+  \end{itemize}
+
+  \item \textbf{Order of Selection}
+  \begin{itemize}
+    \item If order matters, different sequences count as different outcomes
+    \item If order does not matter, only the selected elements matter
+  \end{itemize}
+
+  \item \textbf{Permutations (Order Matters)}
+  \[
+    nP_r = \frac{n!}{(n-r)!} = n(n-1) \cdots(n-r+1)
+  \]
+
+  \item \textbf{Combinations (Order Does Not Matter)}
+  \[
+    nC_r = \binom{n}{r} = \frac{n!}{r!(n-r)!} =  \frac{n(n-1) \cdots(n-r+1)}{r!}
+  \]
+\end{itemize}
+
+
+\end{document}

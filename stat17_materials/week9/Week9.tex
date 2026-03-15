@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{STAT 17 Discussion Notes \\ Week 9: Hypothesis Testing}
+\author{Xiao Zhang}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Goal of Hypothesis Testing}
+
+Hypothesis testing is a statistical method used to determine whether there is enough evidence in sample data to support a claim about a population parameter.
+
+Examples of questions answered using hypothesis tests:
+
+\begin{itemize}
+\item Does a new drug have fewer side effects?
+\item Has public opinion changed over time?
+\item Is the average body temperature different from 98.6°F?
+\end{itemize}
+
+A hypothesis test uses sample data to decide whether a population parameter is likely equal to a hypothesized value.
+
+\section{The Five Steps of a Hypothesis Test}
+
+\begin{enumerate}
+
+\item \textbf{State the Hypotheses}
+
+Two hypotheses are always defined:
+
+\begin{itemize}
+\item Null hypothesis ($H_0$): the status quo or assumed value
+\item Alternative hypothesis ($H_1$ or $H_a$): the claim we want evidence for
+\end{itemize}
+
+Three possible forms:
+
+\[
+H_0: \text{parameter} = \text{value}
+\]
+
+Left-tailed:
+\[
+H_1: \text{parameter} < \text{value}
+\]
+
+Right-tailed:
+\[
+H_1: \text{parameter} > \text{value}
+\]
+
+Two-tailed:
+\[
+H_1: \text{parameter} \neq \text{value}
+\]
+
+\item \textbf{Check Conditions and Choose Significance Level}
+
+Common significance levels:
+
+\[
+\alpha = 0.01, \quad 0.05, \quad 0.10
+\]
+
+$\alpha$ represents the probability of making a Type I error.
+
+\item \textbf{Calculate the Test Statistic}
+
+The test statistic measures how far the sample statistic is from the hypothesized value in standard errors.
+
+\item \textbf{Find the p-value}
+
+The p-value is the probability of observing the sample result (or something more extreme) assuming $H_0$ is true.
+
+\item \textbf{Draw a Conclusion}
+
+\begin{itemize}
+\item If $p$-value $\leq \alpha$: Reject $H_0$
+\item If $p$-value $> \alpha$: Do Not Reject $H_0$
+\end{itemize}
+
+Conclusions should always be written in terms of the \textbf{alternative hypothesis}.
+
+\end{enumerate}
+
+\section{Hypothesis Test for a Population Proportion}
+
+Used when the parameter is a population proportion $p$.
+
+\subsection{Conditions}
+
+\begin{itemize}
+\item Random sample or randomized experiment
+\item Sample size less than 5\% of population
+\item Large sample condition:
+\[
+np_0(1-p_0) \ge 10
+\]
+\end{itemize}
+
+\subsection{Test Statistic}
+
+\[
+z =
+\frac{\hat{p}-p_0}
+{\sqrt{\frac{p_0(1-p_0)}{n}}}
+\]
+
+\subsection{p-value}
+
+Left-tailed test:
+\[
+p\text{-value}=P(Z<z)
+\]
+
+Right-tailed test:
+\[
+p\text{-value}=P(Z>z)
+\]
+
+Two-tailed test:
+\[
+p\text{-value}=2P(Z>|z|)
+\]
+
+\section{Hypothesis Test for a Population Mean (Case 1: $\sigma^2$ is unknown)}
+
+Used when the parameter is a population mean $\mu$, $\sigma$ .
+
+\subsection{Conditions}
+
+\begin{itemize}
+\item Random sample
+\item Sample size less than 5\% of population
+\item Data from a normal population OR $n \ge 30$
+\end{itemize}
+
+\subsection{Test Statistic}
+
+\[
+t =
+\frac{\bar{x}-\mu_0}
+{s/\sqrt{n}}
+\]
+
+\begin{itemize}
+\item Follows a $t$ distribution
+\item Degrees of freedom: $df = n-1$
+\end{itemize}
+
+\subsection{p-value}
+
+Left-tailed:
+\[
+p\text{-value}=P(t<t_0)
+\]
+
+Right-tailed:
+\[
+p\text{-value}=P(t>t_0)
+\]
+
+Two-tailed:
+\[
+p\text{-value}=2P(t>|t_0|)
+\]
+
+
+\section{Hypothesis Test for a Population Mean (Case 2)}
+
+Used when the parameter is a population mean $\mu$.
+
+\subsection{Conditions}
+
+\begin{itemize}
+\item Random sample
+\item Sample size less than 5\% of population
+\item Data from a normal population OR $n \ge 30$
+\end{itemize}
+
+\subsection{Test Statistic}
+
+\[
+z =
+\frac{\bar{x}-\mu_0}
+{\sigma/\sqrt{n}}
+\]
+
+\subsection{p-value}
+
+Left-tailed:
+\[
+p\text{-value}=P(Z<z_0)
+\]
+
+Right-tailed:
+\[
+p\text{-value}=P(Z>z_0)
+\]
+
+Two-tailed:
+\[
+p\text{-value}=2P(Z>|z_0|)
+\]
+
+
+\section{Relationship Between Confidence Intervals and Hypothesis Tests}
+
+For a two-sided test:
+
+\begin{itemize}
+\item If the hypothesized value is \textbf{outside} the confidence interval $\Rightarrow$ Reject $H_0$
+\item If the hypothesized value is \textbf{inside} the confidence interval $\Rightarrow$ Do Not Reject $H_0$
+\end{itemize}
+
+Example:
+
+A 95\% confidence interval that contains the null value means the hypothesis test at $\alpha = 0.05$ will not reject $H_0$.
+
+\section{Type I and Type II Errors}
+
+Because hypothesis tests use sample data, mistakes are possible.
+
+\subsection{Type I Error}
+
+Rejecting $H_0$ when $H_0$ is actually true.
+
+\[
+P(\text{Type I error}) = \alpha
+\]
+
+Example: Concluding a drug has an effect when it actually does not.
+
+\subsection{Type II Error}
+
+Failing to reject $H_0$ when $H_1$ is actually true.
+
+\[
+P(\text{Type II error}) = \beta
+\]
+
+Example: Concluding a drug has no effect when it actually works.
+
+\subsection{Important Relationship}
+
+Reducing $\alpha$ increases $\beta$.
+
+\section{Key Summary}
+
+\textbf{Hypothesis testing process}
+
+\begin{enumerate}
+\item State $H_0$ and $H_1$
+\item Check conditions
+\item Compute test statistic
+\item Find p-value
+\item Compare with $\alpha$ and conclude
+\end{enumerate}
+
+\end{document}
+

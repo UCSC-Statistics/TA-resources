@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\geometry{margin=1in}
+
+\title{STAT 17 Week 8 \\Confidence Intervals}
+\author{Xiao Zhang}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Statistical Inference Overview}
+
+Statistical inference allows us to use sample data to estimate population parameters.
+
+\textbf{Target Parameter}
+\begin{itemize}
+    \item Quantitative data $\rightarrow$ population mean $\mu$
+    \item Categorical data $\rightarrow$ population proportion $p$
+\end{itemize}
+
+\textbf{Point Estimate}
+\begin{itemize}
+    \item $\bar{x}$ estimates $\mu$
+    \item $\hat{p}$ estimates $p$
+\end{itemize}
+
+\textbf{Confidence Interval (CI)}
+\[
+\text{Point Estimate} \pm (\text{Critical Value})(\text{Standard Error})
+\]
+
+\section*{2. Confidence Level Interpretation}
+
+\textbf{Correct Interpretation:}
+
+In the long run, about $(1-\alpha)\%$ of all possible samples will produce confidence intervals that contain the true parameter.
+
+\textbf{Important:} Confidence is NOT probability.
+
+We do NOT say:
+\begin{itemize}
+    \item ``There is a 95\% probability the parameter is inside.''
+    \item ``95\% of data values fall inside.''
+\end{itemize}
+
+\section*{3. Confidence Interval for a Population Proportion}
+
+\subsection*{When to Use}
+\begin{itemize}
+    \item Data are Yes/No (success/failure)
+    \item Interested in population proportion $p$
+\end{itemize}
+
+\subsection*{Conditions}
+\begin{enumerate}
+    \item Random sample
+    \item $n \le 0.05N$
+    \item $n\hat{p}(1-\hat{p}) \ge 10$
+\end{enumerate}
+
+\subsection*{Formula}
+\[
+\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+\textbf{Critical values (Z-table):}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Confidence Level & $z_{\alpha/2}$ \\
+\midrule
+90\% & 1.645 \\
+95\% & 1.96 \\
+99\% & 2.575 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{4. Confidence Interval for a Population Mean}
+
+\subsection*{Case 1: $\sigma$ Known (or large $n$)}
+
+\subsubsection*{When to Use}
+\begin{itemize}
+    \item Interested in $\mu$
+    \item Population standard deviation $\sigma$ known
+    \item OR large sample size ($n \ge 30$)
+\end{itemize}
+
+\subsubsection*{Formula}
+\[
+\bar{x} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
+\]
+
+\subsection*{Case 2: $\sigma$ Unknown (Use $s$)}
+
+\subsubsection*{When to Use}
+\begin{itemize}
+    \item Interested in $\mu$
+    \item $\sigma$ unknown (almost always)
+    \item Small sample ($n < 30$)
+\end{itemize}
+
+\subsubsection*{Conditions}
+\begin{enumerate}
+    \item Random sample
+    \item $n \le 0.05N$
+    \item Population approximately normal OR $n \ge 30$
+\end{enumerate}
+
+\subsubsection*{Formula}
+\[
+\bar{x} \pm t_{\alpha/2, df} \frac{s}{\sqrt{n}}
+\]
+\[
+df = n - 1
+\]
+
+\section*{5. Z vs T Decision Rule}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+Parameter & $\sigma$ Known? & Sample Size & Use \\
+\midrule
+Proportion & N/A & Any & Z \\
+Mean & Yes & Any & Z \\
+Mean & No & $n < 30$ & T \\
+Mean & No & $n \ge 30$ & Usually T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Key Rule:}
+\begin{itemize}
+    \item Proportion $\rightarrow$ Always Z
+    \item Mean $\rightarrow$ Check if $\sigma$ known
+\end{itemize}
+
+\section*{6. Margin of Error}
+
+\[
+\text{ME} = (\text{Critical Value})(\text{Standard Error})
+\]
+
+\textbf{Effects on Width:}
+\begin{itemize}
+    \item Increase confidence level $\rightarrow$ wider interval
+    \item Increase sample size $\rightarrow$ narrower interval
+    \item If $n$ quadruples $\rightarrow$ ME is cut in half
+\end{itemize}
+
+\section*{7. Sample Size Formulas}
+
+\subsection*{For Proportion}
+\[
+n = \hat{p}(1-\hat{p})\left(\frac{z_{\alpha/2}}{E}\right)^2
+\]
+
+If no estimate available, use $\hat{p} = 0.5$.
+
+\subsection*{For Mean}
+\[
+n = \left(\frac{z_{\alpha/2}s}{E}\right)^2
+\]
+
+Always round up.
+
+\section*{8. Interpretation Templates}
+
+\textbf{Confidence Interval:}
+
+We are \_\_\_\% confident that the true (parameter in context) lies between (lower bound) and (upper bound).
+
+\textbf{Confidence Level:}
+
+In the long run, about \_\_\_\% of all possible samples will produce intervals that contain the true parameter.
+
+\section*{9. Common Exam Traps}
+
+\begin{itemize}
+    \item Mixing up parameter vs statistic
+    \item Using Z instead of T for small samples
+    \item Incorrect interpretation of confidence level
+    \item Forgetting to check conditions
+    \item Forgetting degrees of freedom ($df=n-1$)
+\end{itemize}
+
+\end{document}

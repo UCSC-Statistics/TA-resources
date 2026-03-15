@@ -1,0 +1,209 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{STAT 17 Week 7 \\Central Limit Theorem (CLT) \& Sampling Distributions}
+\author{Xiao Zhang}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Sampling Distributions}
+
+\textbf{Population parameters} are fixed (but unknown).  
+\textbf{Sample statistics} are random variables.
+
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{Population Parameter} & \textbf{Sample Statistic} \\ \hline
+Mean $\mu$ & $\bar{x}$ \\
+Std. Dev. $\sigma$ & $s$ \\
+Proportion $p$ & $\hat{p}$ \\
+\end{tabular}
+\end{center}
+
+\textbf{Definition.}  
+A \textbf{sampling distribution} is the probability distribution of a statistic
+(e.g., $\bar{x}$ or $\hat{p}$) from all possible samples of size $n$.
+
+\bigskip
+
+\section*{2. CLT for the Sample Mean}
+
+Suppose:
+\begin{itemize}[leftmargin=1.2cm]
+\item Simple random sample (SRS)
+\item Sample size $n$
+\item Population mean $\mu$
+\item Population standard deviation $\sigma$
+\end{itemize}
+
+\subsection*{Center}
+\[
+\mu_{\bar{x}} = \mu
+\]
+The sample mean is an unbiased estimator of $\mu$.
+
+\subsection*{Spread (Standard Error)}
+\[
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+\]
+This is called the \textbf{standard error of the mean}.
+
+As $n$ increases:
+\[
+\text{Standard Error decreases}
+\]
+Sample means vary less than individual observations.
+
+\subsection*{Shape}
+
+\textbf{Case 1: Population is normal}  
+\[
+\bar{x} \text{ is normal for any } n.
+\]
+
+\textbf{Case 2: Population not normal}
+
+\textbf{Central Limit Theorem (CLT):}
+
+If $n \ge 30$ (general guideline),
+\[
+\bar{x} \approx \text{Normal}
+\]
+regardless of the population shape.
+
+Larger $n$ $\Rightarrow$ better approximation.
+
+\subsection*{Full Model (When Conditions Met)}
+\[
+\bar{x} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)
+\]
+
+\bigskip
+
+\section*{3. Z-Score for Sample Means}
+
+If sampling distribution is approximately normal:
+\[
+z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}
+\]
+
+\textbf{Important distinction:}
+
+\begin{itemize}
+\item Individual observation:
+\[
+z = \frac{x - \mu}{\sigma}
+\]
+\item Sample mean:
+\[
+z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}
+\]
+\end{itemize}
+
+\bigskip
+
+\section*{4. Conditions for CLT (Mean)}
+
+Always check:
+
+\begin{enumerate}
+\item Random sample
+\item Independence:
+\[
+n \le 0.05N
+\]
+\item Normality condition:
+\begin{itemize}
+\item Population normal OR
+\item $n \ge 30$
+\end{itemize}
+\end{enumerate}
+
+\bigskip
+
+\section*{5. Sampling Distribution of the Sample Proportion}
+
+Suppose:
+\[
+X \sim \text{Binomial}(n, p), \quad \hat{p} = \frac{X}{n}
+\]
+
+\subsection*{Center}
+\[
+\mu_{\hat{p}} = p
+\]
+
+\subsection*{Spread (Standard Error)}
+\[
+\sigma_{\hat{p}} =
+\sqrt{\frac{p(1-p)}{n}}
+\]
+
+As $n$ increases:
+\[
+\text{Standard Error decreases}
+\]
+
+\subsection*{Shape Condition}
+
+Sampling distribution of $\hat{p}$ is approximately normal if:
+\[
+np(1-p) \ge 10
+\]
+
+\subsection*{Full Model (When Conditions Met)}
+
+If:
+\begin{itemize}
+\item Random sample
+\item Independence
+\item $np(1-p) \ge 10$
+\end{itemize}
+
+Then:
+\[
+\hat{p} \sim
+N\left(p, \sqrt{\frac{p(1-p)}{n}}\right)
+\]
+
+\bigskip
+
+\section*{6. Z-Score for Sample Proportions}
+
+If approximately normal:
+\[
+z =
+\frac{\hat{p} - p}
+{\sqrt{\frac{p(1-p)}{n}}}
+\]
+
+Note:
+\begin{itemize}
+\item Use population $p$ in denominator.
+\item Check independence: $n \le 0.05N$
+\end{itemize}
+
+\bigskip
+
+\section*{7. Mean vs Proportion Summary}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+ & \textbf{Sample Mean} & \textbf{Sample Proportion} \\ \hline
+Center & $\mu$ & $p$ \\
+Spread & $\frac{\sigma}{\sqrt{n}}$ & $\sqrt{\frac{p(1-p)}{n}}$ \\
+Normal Condition & $n \ge 30$ & $np(1-p) \ge 10$ \\
+Z Formula & $\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}$ 
+& $\frac{\hat{p}-p}{\sqrt{p(1-p)/n}}$ \\
+\end{tabular}
+\end{center}
+
+
+\end{document}

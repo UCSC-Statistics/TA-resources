@@ -1,0 +1,266 @@
+\documentclass[11pt]{article}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{STAT 17 Discussion Notes \\ Week 10}
+\date{March 2026}
+\author{Xiao Zhang}
+
+\begin{document}
+
+\maketitle
+
+\section{Comparing Two Groups}
+
+When comparing two groups, the method depends on the type of response variable and whether the samples are independent or paired.
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+ & Two Proportions & Two Means (Independent Samples) & Two Means (Dependent) \\
+\midrule
+Parameter & $p_1 - p_2$ & $\mu_1 - \mu_2$ & $\mu_d$ \\
+
+Response Variable & Qualitative & Quantitative & Quantitative \\
+
+Sampling Structure & Independent samples & Independent samples & Matched / paired data \\
+
+Distribution & Standard Normal ($z$) & $t$ distribution & $t$ distribution ($df=n-1$) \\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section{Two-Proportion Inference}
+
+\subsection*{Conditions}
+
+\begin{itemize}
+\item Independent random samples
+\item Sample size less than $5\%$ of population
+\item Success-failure condition
+\end{itemize}
+
+\[
+n_1\hat p_1(1-\hat p_1) \ge 10
+\]
+
+\[
+n_2\hat p_2(1-\hat p_2) \ge 10
+\]
+
+\subsection*{Confidence Interval}
+
+\[
+(\hat p_1 - \hat p_2)
+\pm
+z_{\alpha/2}
+\sqrt{
+\frac{\hat p_1(1-\hat p_1)}{n_1}
++
+\frac{\hat p_2(1-\hat p_2)}{n_2}
+}
+\]
+
+\subsection*{Test Statistic}
+
+\[
+z =
+\frac{\hat p_1 - \hat p_2}
+{\sqrt{\hat p(1-\hat p)
+\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+\]
+
+where
+
+\[
+\hat p = \frac{x_1+x_2}{n_1+n_2}
+\]
+
+\section{Two-Sample $t$ Procedures}
+
+\subsection*{Conditions}
+
+\begin{itemize}
+\item Independent random samples
+\item Sample size less than $5\%$ of population
+\item Nearly normal populations OR large samples ($n \ge 30$)
+\end{itemize}
+
+\subsection*{Confidence Interval}
+
+\[
+(\bar{x}_1 - \bar{x}_2)
+\pm
+t_{\alpha/2}
+\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+\]
+
+\subsection*{Test Statistic}
+
+\[
+t =
+\frac{\bar{x}_1 - \bar{x}_2}
+{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\]
+
+\section{Paired $t$ Procedures}
+
+Used when observations are paired (e.g., before–after measurements or matched subjects).
+
+Let
+
+\[
+d = x_1 - x_2
+\]
+
+where
+
+\begin{itemize}
+\item $d$ = difference for each pair
+\item $x_1$ = first observation in the pair
+\item $x_2$ = second observation in the pair
+\end{itemize}
+
+We then treat the differences as a single sample.
+
+\subsection*{Notation}
+
+\begin{itemize}
+\item $\bar d$ = sample mean of the differences
+\item $s_d$ = sample standard deviation of the differences
+\item $n$ = number of pairs
+\end{itemize}
+
+\subsection*{Confidence Interval}
+
+\[
+\bar d \pm t_{\alpha/2}\frac{s_d}{\sqrt{n}}
+\]
+
+\subsection*{Test Statistic}
+
+\[
+t =
+\frac{\bar d - 0}{s_d/\sqrt{n}}
+\]
+
+\section{Chi-Square Test of Independence}
+
+Used to determine whether two categorical variables are associated.
+
+\subsection*{Hypotheses}
+
+\[
+H_0: \text{The two variables are independent}
+\]
+
+\[
+H_1: \text{The two variables are dependent}
+\]
+
+\subsection*{Conditions}
+
+\begin{itemize}
+\item All expected counts $\ge 1$
+\item No more than 20\% of expected counts $< 5$
+\end{itemize}
+
+\subsection*{Expected Counts}
+
+\[
+E = \frac{(\text{row total})(\text{column total})}{n}
+\]
+
+\subsection*{Test Statistic}
+
+\[
+\chi^2 =
+\sum \frac{(O - E)^2}{E}
+\]
+
+\subsection*{Degrees of Freedom}
+
+\[
+df = (r-1)(c-1)
+\]
+
+\subsection*{P-value}
+
+\[
+p = P(\chi^2 > \chi_0^2)
+\]
+
+\section{Linear Regression}
+
+Linear regression describes the relationship between two quantitative variables.
+
+\begin{itemize}
+\item Explanatory variable: $x$
+\item Response variable: $y$
+\end{itemize}
+
+\subsection*{Regression Line}
+
+\[
+y = mx + b
+\]
+
+where
+
+\begin{itemize}
+\item $m$ = slope
+\item $b$ = $y$-intercept
+\end{itemize}
+
+For prediction we use
+
+\[
+\hat{y} = mx + b
+\]
+
+where $\hat{y}$ is the predicted value of $y$.
+
+\subsection*{Interpretation of the Slope}
+
+The slope $m$ represents the expected change in the response variable $y$ for a one-unit increase in the explanatory variable $x$.
+
+In context:
+
+\begin{quote}
+For each one-unit increase in $x$, the predicted value of $y$ changes by $m$ units on average.
+\end{quote}
+
+\subsection*{Interpretation of the Intercept}
+
+The intercept $b$ represents the predicted value of $y$ when $x = 0$.
+
+\begin{quote}
+When $x = 0$, the predicted value of the response variable is $b$.
+\end{quote}
+
+Note: Sometimes $x=0$ may not be meaningful in the context of the data.
+
+\subsection*{Residual}
+
+A residual measures the difference between the observed value and the predicted value.
+
+\[
+\text{Residual} = y - \hat{y}
+\]
+
+where
+
+\begin{itemize}
+\item $y$ = observed value
+\item $\hat{y}$ = predicted value from the regression line
+\end{itemize}
+
+Residuals are used to evaluate how well the regression line fits the data.
+
+
+\end{document}
