@@ -1,0 +1,41 @@
+---
+title: "Practice Problems: Bivariate Functions & Differentiation"
+author: ""
+output: 
+  github_document:
+    toc: false
+---
+
+```{r setup, include=FALSE}
+# This chunk sets up the environment.
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.align="center")
+
+library(ggplot2)
+library(gridExtra)
+
+# Common plotting theme for consistency
+common_theme <- theme_minimal() + 
+                theme(axis.title = element_text(face="bold"),
+                      plot.title = element_text(face="bold", hjust = 0.5))
+
+```
+
+1. Find the domain of the function $f(x, y) = \log(y - x^2)$. Describe the region geometrically and sketch it in the $x$-$y$ plane.
+
+2. Calculate the first-order ($f_x, f_y$) and second-order ($f_{xx}, f_{yy}, f_{xy}$) partial derivatives for the following functions:
+   (a) $f(x, y) = x^4 y^3 - 2x + 5y$
+   (b) $f(x, y) = x e^{x^2 + y}$
+
+3. Let
+$$
+f(x, y) = \frac{1}{24} xy^2 (3x^2 + y).
+$$
+Find the first-order partial derivatives ($f_x, f_y$) and the second-order partial derivatives ($f_{xx}, f_{yy}, f_{xy}$).
+
+4. (More Challenging) Find the first-order ($f_x, f_y$) and second-order ($f_{xx}, f_{yy}, f_{xy}$) partial derivatives for the following functions:
+   (a) $f(x, y) = \log(x^2 + y^2)$
+   (b) $f(x, y) = \frac{x + y}{x - y}$
+   (c) $f(x, y) = x e^{y/x}$
+   (d) $f(x, y) = x \cos(\sqrt{xy})$
+
+5. Show that the function $u(x, t) = \sin(x - ct)$ satisfies the wave equation $u_{tt} = c^2 u_{xx}$.

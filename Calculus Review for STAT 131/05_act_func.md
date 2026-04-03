@@ -1,0 +1,276 @@
+Activity: Visualizing Functions and Their Derivatives
+================
+Jibo Shen
+
+While it is good to memorize the plot of some most common functions,
+like those mentioned in “Reading: Function Basics and Common Functions”,
+sometimes we may encounter a function for the first time, and we need to
+sketch it from scratch.
+
+## General Strategy
+
+When you need to sketch a function $f(x)$ from scratch, it helps to
+follow a systematic checklist. By combining basic algebra with
+derivatives, you can map out any curve.
+
+1.  **Identify the Domain**
+
+- Look for any $x$-values where the function cannot exist.
+- Watch out for: Division by zero (which creates vertical asymptotes or
+  holes) and negative numbers under even roots.
+
+2.  **Find the Intercepts**
+
+- $y$-intercept: Set $x = 0$ and solve for $y$. This is where the graph
+  crosses the vertical axis. Note that there is at most one
+  $y$-intercept.
+- $x$-intercepts: Set $f(x) = 0$ and solve for $x$. These are the roots
+  of the function, where it crosses the horizontal axis.
+
+3.  **Check End Behavior and Asymptotes**
+
+- Horizontal Asymptotes: What happens to $y$ as $x$ gets extremely large
+  (approaches $+\infty$) or extremely small (approaches $-\infty$)?
+- Vertical Asymptotes: Draw dashed vertical lines at the $x$-values that
+  make the denominator zero. The graph will curve sharply upward or
+  downward as it gets close to these lines.
+
+4.  **Find Critical Points using $f'(x)$**
+
+- Calculate the first derivative, $f'(x)$. Set it equal to $0$ and solve
+  for $x$. Also find where $f'(x)$ is undefined.
+- These $x$-values are your “critical points.” They represent the exact
+  locations where the graph temporarily flattens out—meaning they are
+  the locations of your local maximums and minimums.
+
+5.  **Determine Increasing and Decreasing Intervals**
+
+- Plot your critical points on a simple number line. Pick a “test
+  number” in each section between the critical points and plug it into
+  the derivative $f'(x)$.
+- The Rule:
+  - If $f'(\text{test}) > 0$, the original function $f(x)$ is increasing
+    (going up) in that interval.
+  - If $f'(\text{test}) < 0$, the original function $f(x)$ is decreasing
+    (going down) in that interval.
+
+6.  **Plot Key Points and Connect**
+
+- Plot your $x$ and $y$ intercepts.
+- Plug your critical $x$-values back into the original function $f(x)$
+  to find their exact $y$-coordinates, and plot those maximums and
+  minimums.
+- Draw a smooth curve connecting your plotted points, making sure the
+  curve goes up where $f'(x)$ is positive, goes down where $f'(x)$ is
+  negative, and respects any asymptotes.
+
+------------------------------------------------------------------------
+
+### Example 1: Sketching a Polynomial Function
+
+Let’s sketch the function $f(x) = x^3 - 3x^2$.
+
+1.  Identify the Domain
+
+- Since this is a polynomial, there are no denominators or square roots.
+  The domain is all real numbers.
+
+2.  Find the Intercepts
+
+- $y$-intercept: Plug in $x = 0$. We get $f(0) = 0^3 - 3(0)^2 = 0$. The
+  graph crosses at $(0,0)$.
+- $x$-intercepts: Set $f(x) = 0$. We get $x^3 - 3x^2 = 0$. Factoring out
+  $x^2$ gives $x^2(x - 3) = 0$. This means $x = 0$ and $x = 3$. The
+  graph crosses the horizontal axis at $(0,0)$ and $(3,0)$.
+
+3.  Check End Behavior and Asymptotes
+
+- There are no asymptotes for polynomials.
+- As $x$ gets very large, $x^3$ dominates and the graph goes way up. As
+  $x$ gets very negative, $x^3$ goes way down.
+
+4.  Find Critical Points using $f'(x)$
+
+- The derivative is $f'(x) = 3x^2 - 6x$.
+- Set it equal to $0$ to find critical points: $3x^2 - 6x = 0$, which
+  factors to $3x(x - 2) = 0$.
+- Our critical points are at $x = 0$ and $x = 2$.
+
+5.  Determine Increasing and Decreasing Intervals
+
+- We check the intervals around $x = 0$ and $x = 2$.
+- Test a number less than $0$ (like $x = -1$):
+  $f'(-1) = 3(-1)^2 - 6(-1) = 9$. Positive, so the function is
+  increasing.
+- Test a number between $0$ and $2$ (like $x = 1$):
+  $f'(1) = 3(1)^2 - 6(1) = -3$. Negative, so the function is decreasing.
+- Test a number greater than $2$ (like $x = 3$):
+  $f'(3) = 3(3)^2 - 6(3) = 9$. Positive, so the function is increasing.
+- This tells us $x = 0$ is a local peak, and $x = 2$ is a local valley.
+
+6.  Plot Key Points and Connect
+
+- We have our intercepts $(0,0)$ and $(3,0)$.
+- Let’s find the exact coordinate of our valley at $x = 2$. Plug it into
+  the original function: $f(2) = 2^3 - 3(2)^2 = 8 - 12 = -4$. So the
+  valley is at $(2, -4)$.
+- Now, connect the dots smoothly, rising to $(0,0)$, falling to
+  $(2, -4)$, and rising through $(3,0)$.
+
+<img src="05_act_func_files/figure-gfm/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+
+### Example 2: Sketching a Rational Function
+
+Let’s sketch the function $f(x) = \frac{x}{x - 2}$.
+
+1.  Identify the Domain
+
+- The denominator cannot be zero, so $x - 2 \neq 0$, which means
+  $x \neq 2$.
+
+2.  Find the Intercepts
+
+- $y$-intercept: Plug in $x = 0$. We get $f(0) = \frac{0}{0 - 2} = 0$.
+  The graph crosses at $(0,0)$.
+- $x$-intercepts: Set $f(x) = 0$. A fraction is zero only when its
+  numerator is zero. So, $x = 0$.
+
+3.  Check End Behavior and Asymptotes
+
+- Vertical Asymptote: Because the domain excludes $x = 2$, we draw a
+  dashed vertical line at $x = 2$.
+- Horizontal Asymptote: Look at the highest powers of $x$. They match
+  (both are $x^1$). The ratio of their coefficients is $1/1 = 1$. So, as
+  $x$ gets massive, the graph flattens out at the horizontal line
+  $y = 1$.
+
+4.  Find Critical Points using $f'(x)$
+
+- Using the quotient rule, the derivative is
+  $f'(x) = \frac{1(x - 2) - x(1)}{(x - 2)^2} = \frac{-2}{(x - 2)^2}$.
+- Set it equal to $0$: $\frac{-2}{(x - 2)^2} = 0$. This has no solution
+  because the numerator is $-2$.
+- There are no critical points. The graph has no standard peaks or
+  valleys.
+
+5.  Determine Increasing and Decreasing Intervals
+
+- We only need to test around our vertical asymptote at $x = 2$.
+- Test a number less than $2$ (like $x = 0$):
+  $f'(0) = \frac{-2}{(0 - 2)^2} = -0.5$. Negative, so it is decreasing.
+- Test a number greater than $2$ (like $x = 3$):
+  $f'(3) = \frac{-2}{(3 - 2)^2} = -2$. Negative, so it is also
+  decreasing.
+- The function is constantly decreasing on both sides of the asymptote.
+
+6.  Plot Key Points and Connect
+
+- Draw the dashed asymptotes at $x = 2$ and $y = 1$.
+- Plot the intercept at $(0,0)$.
+- Since it decreases before $x = 2$ and passes through $(0,0)$, it must
+  be trapped in the bottom-left section of the asymptotes.
+- Since it decreases after $x = 2$, it must start from the top-right and
+  curve down towards $y = 1$.
+
+<img src="05_act_func_files/figure-gfm/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+## Visualizing the Derivative
+
+### The Tangent Line
+
+When we say the derivative $f'(x)$ gives us the “slope” of the curve,
+what we are really talking about is the slope of the **tangent line** at
+any specific point.
+
+A tangent line is a straight line that just barely grazes the curve of a
+function at one exact point, without crossing through it at that
+immediate location. It represents the exact direction the curve is
+heading at that very second.
+
+If you pick a specific $x$-value, let’s call it $x = a$:
+
+1.  The height of the curve is $f(a)$. The point on the graph is
+    $(a, f(a))$.
+2.  The slope of the tangent line at that exact point is $f'(a)$.
+
+**Finding the Tangent Line Equation:**
+
+Once you have the point and the slope, you can find the full equation of
+the tangent line using the point-slope form from algebra:
+$y - y_1 = m(x - x_1)$. Substituting our calculus terms, the equation of
+the tangent line is: $y - f(a) = f'(a)(x - a)$
+
+Example: Let’s find and graph the tangent line to the function
+$f(x) = x^2$ at the point where $x = 1$.
+
+1.  Find the point: Plug $x = 1$ into the original function.
+    $f(1) = 1^2 = 1$. Our point is $(1, 1)$.
+2.  Find the slope: Take the derivative. $f'(x) = 2x$. Plug $x = 1$ into
+    the derivative to get the specific slope at that point.
+    $f'(1) = 2(1) = 2$.
+3.  Write the equation: Using our formula: $y - 1 = 2(x - 1)$.
+    Simplifying this gives $y = 2x - 1$.
+
+If you graph $f(x) = x^2$ and the line $y = 2x - 1$, you will see the
+line perfectly grazes the curve at the point $(1, 1)$.
+
+<img src="05_act_func_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+### Visualizing the Changing Derivative
+
+To see how the derivative $f'(x)$ represents the changing slope of the
+function, we can draw tangent lines at several different points along
+the curves from our previous examples.
+
+Notice how the steepness and direction of each dashed tangent line
+perfectly matches the curve at that specific point.
+
+**Tangent Lines for Example 1: $f(x) = x^3 - 3x^2$**
+
+We will look at the tangents at $x = 0$ (a peak), $x = 1$ (a decreasing
+section), and $x = 3$ (a steep increasing section).
+
+<img src="05_act_func_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+**Tangent Lines for Example 2: $f(x) = \frac{x}{x - 2}$**
+
+We will look at the tangents at $x = 0$, $x = 1$, and $x = 3$. Notice
+that because the derivative is always negative, all three tangent lines
+point downwards.
+
+<img src="05_act_func_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+------------------------------------------------------------------------
+
+## Practice
+
+For each function below: 1. Find the derivative $f'(x)$. 2. Identify the
+critical points by setting $f'(x) = 0$. 3. Sketch the general shape of
+the curve $f(x)$. 4. Draw the dashed tangent line at the specified
+$x$-values.
+
+1.  $f(x) = e^{-x^2/2}$
+
+- Draw tangents at: $x = -1$, $x = 0$, and $x = 1$.
+
+2.  Let $f(x) = x e^{-x}$, restricted to $x \ge 0$
+
+- Draw tangents at: $x = 0$, $x = 1$, and $x = 2$.
+- *Hint: Use the product rule for the derivative. To find the peak, set
+  $f'(x) = 0$ and factor out the $e^{-x}$ term.*
+
+3.  Let $f(x) = x^2 - x^3$, restricted to the interval $0 \le x \le 1$
+
+- Draw tangents at: $x = 0$, $x = \frac{2}{3}$, and $x = 1$.
+- *Hint: This curve is completely trapped between $x=0$ and $x=1$.
+  Notice how the tangent lines behave at the absolute boundaries of this
+  domain.*
+
+4.  Let $f(x) = \frac{1}{\sqrt{x(1-x)}}$, restricted to the interval
+    $0 < x < 1$
+
+- Draw tangents at: $x = \frac{1}{4}$, $x = \frac{1}{2}$, and
+  $x = \frac{3}{4}$.
+- *Hint: Notice that the function is undefined at $x=0$ and $x=1$,
+  creating vertical asymptotes. Finding where $f'(x) = 0$ will reveal a
+  deep valley instead of a peak.*

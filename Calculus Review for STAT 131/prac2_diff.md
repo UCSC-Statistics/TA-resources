@@ -1,0 +1,34 @@
+Practice Problems: Derivatives
+================
+
+1.  Differentiate $f(x) = 5x^3 - 7x + 12$.
+
+2.  Differentiate $f(x) = \sqrt{x} + \frac{1}{x}$ for $x > 0$.
+
+3.  Differentiate $f(x) = x^2 e^{3x}$.
+
+4.  Differentiate $f(x) = x \log(x)$ for $x > 0$.
+
+5.  Differentiate $f(x) = \frac{3x}{x^2 + 1}$.
+
+6.  Differentiate $f(x) = \frac{e^{2x}}{1 + e^{2x}}$.
+
+7.  Differentiate $f(x) = (2x^3 - 5)^4$.
+
+8.  Differentiate $f(x) = e^{-x^2/2}$.
+
+9.  Differentiate $f(x) = (x^2 + 1) \sin(x)$.
+
+10. Differentiate $f(x) = \log(x^2 + 4x + 1)$.
+
+11. Differentiate $f(x) = \frac{\sin(x)}{x}$.
+
+12. Differentiate $f(x) = e^{x} \cos(2x)$.
+
+13. Differentiate $f(x) = \sqrt{1 + 3x^2}$.
+
+14. Differentiate $f(x) = \frac{x^2 - 1}{x^2 + 1}$.
+
+15. Differentiate $f(x) = x^3 (1 - x)^4$.
+
+16. Differentiate $f(x) = \log\left( \frac{x}{x+1} \right)$.

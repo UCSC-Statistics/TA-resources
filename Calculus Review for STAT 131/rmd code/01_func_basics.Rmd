@@ -1,0 +1,280 @@
+---
+title: "Function Basics and Common Functions"
+author: "Jibo Shen"
+output: 
+  github_document:
+    toc: false
+---
+
+```{r setup, include=FALSE}
+# This chunk sets up the environment.
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.align="center")
+
+library(ggplot2)
+library(gridExtra)
+
+# Common plotting theme for consistency
+common_theme <- theme_minimal() + 
+                theme(axis.title = element_text(face="bold"),
+                      plot.title = element_text(face="bold", hjust = 0.5))
+
+```
+
+In this section, we review the basics of functions and list a "library" of functions that serve as the building blocks for this course.
+
+# Part 1: Function Basics
+
+## Definition of a Function
+
+At its core, a univariate function $f$ is a "rule" that assigns every element $x$ from a set (the domain) to **exactly one** element $f(x)$ in another set (the range).
+
+$$y = f(x)$$
+
+$x$ is called the input, and $y=f(x)$ is the output, or the value of the function. Note that $x$ is just a common notation to represent the input, and it does not actually mean anything. We can also use $y,z,a,b,\cdots$ to represent the input. What really matters is the relationship between the input and the output, the $f$. The same argument goes to $y$, the notation we use to represent the output. However, you **cannot** use the same notation for both input and output. 
+
+
+## The Domain vs. The Support
+
+While sometimes used interchangeably in general calculus, the distinction between these two is critical for this course.
+
+The **Domain** is the set of all possible $x$ values for which the function is mathematically defined.
+
+e.g.) For $f(x) = \frac{1}{x}$, the domain is all real numbers except $0$ ($x \neq 0$).
+
+The **Support** is the set of $x$ values where the function is **non-zero**. In probability, we often deal with functions that are defined to be $0$ everywhere except for a specific interval. 
+
+To see the difference between the two, take a look at the function
+
+$$ f(x) = \begin{cases} x^2 & \text{if } 0 < x < 1 \\ 0 & \text{otherwise} \end{cases} $$
+
+Here, the domain is all real numbers $\mathbb{R}$, but the support is $(0, 1)$. As you will see later in the review, when integrating such a function, you must restrict your integration limits to the support. Outside the support, the function is zero, so the integral over that region is zero. 
+
+Note: In this course, whenever you see a function, or write down one yourself, it is crucial that you figure out the support at first place.
+
+## Inverse Functions
+
+An **inverse function**, denoted as $f^{-1}(x)$, essentially acts as an "Undo" button. If a function $f$ takes an input $x$ and gives you an output $y$, the inverse function takes that $y$ and sends it back to $x$. For example, if we have the forward action: $f(3) = 9$, we can do the reverse action: $f^{-1}(9) = 3$. 
+
+The following figures visualize the concept of an inverse function, $x = f^{-1}(y)$, where we map a known output on the vertical $y$-axis back to its original input on the horizontal $x$-axis. The left panel demonstrates this for a linear relationship ($f^{-1}(2)=1$), while the right panel applies the same logic to a quadratic function ($f^{-1}(4)=2$).
+
+```{r}
+library(ggplot2)
+library(gridExtra)
+
+# --- Plot 1: Linear Case (y = 2x) ---
+df_linear <- data.frame(x = seq(-0.5, 1.5, length.out = 100))
+df_linear$y <- 2 * df_linear$x
+
+p1 <- ggplot() +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_line(data = df_linear, aes(x, y), color = "blue", size = 1) +
+  # Dashed lines for (1, 2)
+  geom_segment(aes(x=0, y=2, xend=1, yend=2), linetype="dashed") +
+  geom_segment(aes(x=1, y=0, xend=1, yend=2), linetype="dashed") +
+  # Labels
+  annotate("text", x=0.5, y=2.2, label="y == 2*x", parse=TRUE, color="blue") +
+  annotate("text", x=-0.3, y=2, label="y == 2", parse=TRUE) +
+  annotate("text", x=1, y=-0.3, label="f^{-1}*(2) == 1", parse=TRUE) +
+  labs(title = "Linear Case") +
+  coord_fixed(xlim=c(-0.5, 1.5), ylim=c(-0.5, 2.5)) +
+  theme_minimal() +
+  theme(axis.text=element_blank(), axis.title=element_blank(), panel.grid=element_blank())
+
+# --- Plot 2: Quadratic Case (y = x^2) ---
+df_quad <- data.frame(x = seq(0, 2.5, length.out = 100))
+df_quad$y <- df_quad$x^2
+
+p2 <- ggplot() +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_line(data = df_quad, aes(x, y), color = "blue", size = 1) +
+  # Dashed lines for (2, 4)
+  geom_segment(aes(x=0, y=4, xend=2, yend=4), linetype="dashed") +
+  geom_segment(aes(x=2, y=0, xend=2, yend=4), linetype="dashed") +
+  # Labels
+  annotate("text", x=1, y=4.5, label="y == x^2", parse=TRUE, color="blue") +
+  annotate("text", x=-0.4, y=4, label="y == 4", parse=TRUE) +
+  annotate("text", x=2, y=-0.6, label="f^{-1}*(4) == 2", parse=TRUE) +
+  labs(title = "Quadratic Case") +
+  coord_fixed(xlim=c(-0.5, 3), ylim=c(-1, 5)) +
+  theme_minimal() +
+  theme(axis.text=element_blank(), axis.title=element_blank(), panel.grid=element_blank())
+
+# --- Combine them Side by Side ---
+grid.arrange(p1, p2, ncol = 2)
+```
+
+Formally,
+
+$$ f(x) = y \iff f^{-1}(y) = x $$
+
+However, not every function has an inverse. To have an inverse, a function must be **One-to-One**. One rule to check is that if you draw a horizontal line anywhere on the graph and it hits the curve more than once, then the function has *no* inverse.
+
+
+e.g.) $y = x^2$ does not have an inverse because $(-2)^2$ and $2^2$ both equal $4$, so you cannot "undo" $4$ to get a single number back.
+
+**Important Notation Note:**
+$$ f^{-1}(x) \neq \frac{1}{f(x)} $$
+The $-1$ is a notation for "inverse," not an exponent.
+
+# Part 2: Common Functions
+
+There are several common functions serving as the building blocks of this course, and it is helpful to know well about them.
+
+Functions can be classified as **continuous** and **discontinuous**. In simple terms, a function is continuous if its graph is a single, unbroken curve. As you will see in some of the plots below.
+
+## Constant Function
+
+The constant function $f(x) = c, \ x\in \mathbb{R}$ is a very special function that no matter what the input is, the output is always a constant. 
+
+```{r}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  geom_hline(yintercept = 2, color = "#2c3e50", size = 1.2) +
+  labs(title = "Constant Function: f(x) = 2", y = "f(x)", x = "x") +
+  ylim(0, 4) +
+  common_theme
+```
+
+## Power Function
+Power function has the general form: $f(x) = kx^n$, where $k\neq 0,\ n\in \mathbb{R}$. Depending on the value of the exponent $n$, the domain and behavior of the function can be different.
+
+When $n$ is non-negative, the domain is $\mathbb{R}$. Furthermore, when $n$ is a non-negative integer ($0,1,2,,3,\cdots$), the function is also called the polynomial function.
+e.g.) Linear function, $f(x) = x$ and Quadratic function, $f(x) = x^2$.
+
+```{r}
+p1 <- ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
+  stat_function(fun = function(x) x, color = "#e74c3c", size = 1) +
+  labs(title = "Linear: f(x) = x") + common_theme
+
+p2 <- ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
+  stat_function(fun = function(x) x^2, color = "#2980b9", size = 1) +
+  labs(title = "Quadratic: f(x) = x^2") + common_theme
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+When $n$ is negative, the domain is $x\neq0$, as we are dealing with fractions, and $0$ can not show up in denominator.
+e.g.) $f(x) = \frac{1}{x}$ and $f(x) = \frac{1}{x^2}$
+
+```{r}
+# We split the range to avoid R drawing a line connecting positive and negative infinity
+p3 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = function(x) 1/x, xlim = c(-4, -0.1), color = "#8e44ad", size=1) +
+  stat_function(fun = function(x) 1/x, xlim = c(0.1, 4), color = "#8e44ad", size=1) +
+  labs(title = "Reciprocal: f(x) = 1/x") + common_theme
+
+p4 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = function(x) 1/x^2, xlim = c(-4, -0.1), color = "#d35400", size=1) +
+  stat_function(fun = function(x) 1/x^2, xlim = c(0.1, 4), color = "#d35400", size=1) +
+  labs(title = "Inv. Square: f(x) = 1/x^2") + common_theme
+
+grid.arrange(p3, p4, ncol = 2)
+```
+
+## Exponential Function
+
+The exponential function has the standard form: $f(x) = a \cdot b^x,\ x\in \mathbb{R}$, where $a\neq0,\ b>0,\  b\neq1$. The constant $b$ is called the **base**
+
+In this course, you will mostly deal with the exponential function with base $e$, the **Euler's Number**. The function under this base has the form $f(x) = a \cdot e^{kx}$, where the constant $k$ controls the growth rate.
+
+e.g.) $f(x) = e^x$ or $f(x) = e^{-x}$
+
+```{r}
+ggplot(data.frame(x = c(-2, 2)), aes(x = x)) +
+  stat_function(fun = function(x) exp(x), aes(color = "e^x"), size = 1) +
+  stat_function(fun = function(x) exp(-x), aes(color = "e^-x"), size = 1, linetype = "dashed") +
+  scale_color_manual(name = "", values = c("e^x" = "#27ae60", "e^-x" = "#2980b9")) +
+  labs(title = "Exponential Functions", y = "f(x)") +
+  common_theme +
+  theme(legend.position = "bottom")
+```
+
+## The Logarithmic Function
+
+The logarithmic function has the general form, or the general Logarithm ($f(x)=\log_b x$), where **base $b$** must be positive and not equal to $1$, and **domain** defined strictly for $x > 0$. You cannot take the log of zero or a negative number.
+
+Again, in this course, you will mostly deal with the logarithmic function with base $e$, the **Natural Log**: $f(x)=\log x$.
+
+Note: The natural log can also be denoted by $f(x)=\ln x$. In this course, we stick with the notation $f(x)=\log x$ for the natural log.
+
+```{r}
+ggplot(data.frame(x = c(0, 5)), aes(x = x)) +
+  stat_function(fun = log, xlim = c(0.01, 5), color = "#c0392b", size = 1) +
+  labs(title = "Natural Log: f(x) = log(x)", y = "f(x)") +
+  common_theme
+```
+
+*The following two functions are cases of discontinuous functions:*
+
+## Step (Piecewise) Functions
+
+A step function is defined by different formulas on different intervals of its domain. 
+
+e.g.) $$ f(x) = \begin{cases} 0 & \text{if } x < 0 \\ 1 & \text{if } x \ge 0 \end{cases} $$
+
+```{r}
+# Define the segments (start and end points for horizontal lines)
+df_segments <- data.frame(
+  x    = c(-2, 0),
+  xend = c(0, 2),
+  y    = c(0, 1),
+  yend = c(0, 1)
+)
+
+ggplot() +
+  # 1. Draw the horizontal lines
+  geom_segment(data = df_segments, aes(x = x, xend = xend, y = y, yend = yend), 
+               size = 1.2, color = "#16a085") +
+  
+  # 2. Hollow circle at (0,0) 
+  # shape=21 allows us to use a white fill to hide the grid line behind it
+  geom_point(aes(x = 0, y = 0), shape = 21, size = 3, 
+             fill = "white", color = "#16a085", stroke = 1.2) +
+  
+  # 3. Filled circle at (0,1)
+  geom_point(aes(x = 0, y = 1), shape = 19, size = 3, color = "#16a085") +
+  
+  labs(title = "Step Function", y = "f(x)") +
+  common_theme
+```
+
+Note that we put a hollow point at $(0,0)$ and a filled point at $(0,1)$.
+
+## The Indicator Function
+Take a look at the function $f(x)$ as shown in the graph below.
+
+```{r}
+# Define the 3 horizontal segments
+df_segments <- data.frame(
+  x    = c(-3, -1, 1),
+  xend = c(-1, 1, 3),
+  y    = c(0, 1, 0),
+  yend = c(0, 1, 0)
+)
+
+ggplot() +
+  # 1. Draw the horizontal lines
+  geom_segment(data = df_segments, aes(x = x, xend = xend, y = y, yend = yend), 
+               size = 1.2, color = "#8e44ad") +
+  
+  # 2. Hollow circles (Limits approached from outside)
+  # At (-1, 0) and (1, 0)
+  geom_point(aes(x = c(-1, 1), y = c(0, 0)), 
+             shape = 21, size = 3, fill = "white", color = "#8e44ad", stroke = 1.2) +
+  
+  # 3. Filled circles (Actual function values)
+  # At (-1, 1) and (1, 1)
+  geom_point(aes(x = c(-1, 1), y = c(1, 1)), 
+             shape = 19, size = 3, color = "#8e44ad") +
+  
+  labs(title = "Indicator Function for Interval [-1, 1]", y = "f(x)") +
+  ylim(-0.5, 1.5) +
+  common_theme
+```
+
+The function returns 1 if $x\in [-1,1]$, and $0$ otherwise. It is an example of the indicator function, a specific type of step function used as a logical "switch."
+
+The indicator function has a specific notation $I_A(x)$. The utility of the function is that it returns 1 if $x$ satisfies a specific condition (is inside set $A$), and $0$ otherwise. It effectively "turns off" a function outside of a specific region.
+
+$$I_A(x) = \begin{cases} 1 & \text{if } x \in A \\ 0 & \text{if } x \notin A \end{cases} $$

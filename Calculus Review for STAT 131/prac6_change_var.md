@@ -1,0 +1,74 @@
+Practice Problems: Change of Variables
+================
+
+1.  Let $f(x)$ be a function defined as: $$
+    f(x) = \begin{cases} 
+    3x^2, & \text{for } 0 < x < 1, \\ 
+    0, & \text{otherwise}.
+    \end{cases}
+    $$ Consider the univariate transformation of variables defined by
+    $y = 1 - x^2$. Find the transformed function $g(y)$ under this
+    change of variable.
+
+2.  Let $f(x)$ be a function defined as: $$
+    f(x) = \begin{cases} 
+    e^{-x}, & \text{for } x > 0, \\ 
+    0, & \text{otherwise}.
+    \end{cases}
+    $$ Consider the transformation defined by $y = x^{1/2}$. Find the
+    transformed function $g(y)$.
+
+3.  Consider the linear transformation defined by $u = 2x + 3y$ and
+    $v = x - y$.
+
+    1)  Find the inverse transformation by solving for $x$ and $y$ in
+        terms of $u$ and $v$.
+    2)  Calculate the Jacobian determinant
+        $J = \frac{\partial(x, y)}{\partial(u, v)}$.
+
+4.  Consider the transformation given by $u = xy$ and $v = \frac{y}{x}$
+    for $x > 0, y > 0$.
+
+    1)  Find the inverse transformation $x(u, v)$ and $y(u, v)$.
+    2)  Calculate the Jacobian determinant
+        $J = \frac{\partial(x, y)}{\partial(u, v)}$.
+
+5.  Find the Jacobian determinant
+    $\det(J) = \frac{\partial(x, y)}{\partial(u, v)}$ for the
+    “Elliptical Coordinate” transformation: $$
+    x = 3u \cos v, \quad y = 2u \sin v
+    $$
+
+- To visualize this elliptical transformation, create a $3 \times 3$
+  grid of points in the $(u,v)$ plane. Let $u \in \{1, 2, 3\}$ and
+  $v \in \{0, \frac{\pi}{2}, \pi\}$. Calculate the corresponding $(x,y)$
+  coordinates for all 9 combinations of these points, and plot them on
+  an $x$-$y$ plane. Notice how the rectangular grid in the $(u,v)$ space
+  maps to an elliptical pattern in the $(x,y)$ space.
+
+6.  Let $f(x, y)$ be a function defined as: $$
+    f(x, y) = \begin{cases} 
+    x + y, & \text{for } 0 < x < 1 \text{ and } 0 < y < 1, \\ 
+    0, & \text{otherwise}.
+    \end{cases}
+    $$ Consider the transformation of variables defined by $u = x + y$
+    and $v = x$. Find the transformed function $g(u, v)$ under this
+    change of variables. Be sure to clearly state the new support region
+    in terms of $u$ and $v$
+
+7.  Let $f(x, y)$ be a function defined as: $$
+    f(x, y) = \begin{cases} 
+    e^{-(x+y)}, & \text{for } x > 0 \text{ and } y > 0, \\ 
+    0, & \text{otherwise}.
+    \end{cases}
+    $$ Consider the transformation defined by the ratio
+    $u = \frac{y}{x}$ and $v = x$. Find the transformed function
+    $g(u, v)$.
+
+8.  Let $f(x, y)$ be a function defined as: $$
+    f(x, y) = \begin{cases} 
+    e^{-x - y}, & \text{for } x > 0 \text{ and } y > 0, \\ 
+    0, & \text{otherwise}.
+    \end{cases}
+    $$ Consider the transformation defined by the difference $u = x - y$
+    and $v = y$. Find the transformed function $g(u, v)$.
