@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+
+
+
+\title{Midterm Review}
+\author{Xiao Zhang}
+\date{February 2026}
+\begin{document}
+\maketitle
+
+
+\section*{Part I. Basic Statistical Concepts and Data Collection}
+
+\begin{itemize}[leftmargin=*]
+\item Define and distinguish between \textbf{statistics}, \textbf{probability}, \textbf{population}, \textbf{sample}, \textbf{parameter}, and \textbf{statistic}.
+\item Distinguish among common \textbf{sampling methods}:
+\begin{itemize}
+\item Simple random sampling
+\item Stratified sampling
+\item Cluster sampling
+\item Systematic sampling
+\item Convenience sampling
+\end{itemize}
+\item Identify different \textbf{types of variables}:
+\begin{itemize}
+\item Quantitative (discrete vs. continuous)
+\item Qualitative / Categorical (binary, nominal, ordinal)
+\end{itemize}
+\item Understand principles of \textbf{ethical data collection and experimentation}, including informed consent, random assignment, and avoiding harm.
+\item Recognize common \textbf{sources of bias}: selection bias, response bias, nonresponse bias, measurement bias, and undercoverage.
+\end{itemize}
+
+\section*{Part II. Descriptive Statistics and Data Visualization}
+
+\begin{itemize}[leftmargin=*]
+\item Interpret common \textbf{data displays}: histograms, boxplots, scatterplots, bar charts, and pie charts.
+\item Calculate and interpret \textbf{measures of center}: mean, median, and mode.
+\item Use sigma notation and correctly apply the sample mean formula:
+\[
+\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
+\]
+
+\item Calculate and interpret \textbf{measures of spread}: range, interquartile range (IQR), variance, and standard deviation.
+
+\item Use and interpret the formulas:
+\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2,
+\qquad
+s = \sqrt{s^2}.
+\]
+
+\item Understand distribution \textbf{skewness} and the relationship between mean and median.
+
+\item Understand the effect of \textbf{linear transformations} on measures of center and spread.
+
+\section*{Part III. Probability Concepts and Counting Methods}
+
+\subsection*{Basic Probability Rules}
+
+\begin{itemize}[leftmargin=*]
+\item Understand basic probability terminology: random experiment, sample space, event, probability, and complement.
+\item Distinguish between \textbf{independent} and \textbf{mutually exclusive} events.
+\item Apply the addition rule:
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B).
+\]
+
+\item Apply the multiplication rule:
+\[
+P(A \cap B) = P(A)\,P(B \mid A).
+\]
+
+\item Calculate conditional probabilities:
+\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}.
+\]
+
+\item Apply the Law of Total Probability:
+
+If $\{B_1,\dots,B_k\}$ is a partition of the sample space with $P(B_i)>0$, then
+\[
+P(A) = \sum_{i=1}^k P(A \mid B_i)\,P(B_i).
+\]
+
+\item Use contingency tables to compute marginal, joint, and conditional probabilities.
+
+\item Determine whether two events are independent using probability calculations.
+\end{itemize}
+
+
+\subsection*{Counting Techniques}
+
+\begin{itemize}[leftmargin=*]
+\item Recognize when counting methods are needed to compute probabilities.
+\item Distinguish between \textbf{permutations} (order matters) and \textbf{combinations} (order does not matter).
+
+\item Apply permutation formulas:
+\[
+{}_nP_r = \frac{n!}{(n-r)!}.
+\]
+
+\item Apply combination formulas:
+\[
+{}_nC_r = {n \choose r} = \frac{n!}{r!(n-r)!}.
+\]
+
+\item Identify real-world scenarios where permutations or combinations are appropriate.
+\end{itemize}
+
+\section*{Part IV. Discrete Random Variables}
+
+\begin{itemize}[leftmargin=*]
+\item Understand the definition of a \textbf{random variable} and how to define one in context.
+
+\item Distinguish between discrete and continuous random variables.
+
+\item Recognize and apply the \textbf{binomial distribution}:
+\[
+P(X = k) = {n \choose k} p^k (1-p)^{n-k}, 
+\qquad 
+E(X)=np, 
+\qquad 
+SD(X)=\sqrt{np(1-p)}.
+\]
+
+\item Recognize and apply the \textbf{Poisson distribution}:
+\[
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, 
+\qquad 
+E(X)=\lambda, 
+\qquad 
+Var(X)=\lambda.
+\]
+
+\item Choose an appropriate discrete distribution for a given scenario.
+
+\item Apply linear transformations of random variables:
+\[
+E(aX+b)=aE(X)+b, 
+\qquad 
+Var(aX+b)=a^2Var(X).
+\]
+\end{itemize}
+
+\end{document}

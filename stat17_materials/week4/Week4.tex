@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+
+\title{Stat 17 Week 4}
+\author{Xiao Zhang}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section*{Probability Topics — Part 2: Events \& Probability Rules}
+
+\begin{itemize}
+  \item \textbf{Events}
+  \begin{itemize}
+    \item An event is any collection of outcomes from the sample space
+    \item Impossible events have probability 0
+    \item Certain events have probability 1
+    \item Events with very small probability (often $<0.05$) are considered unusual
+  \end{itemize}
+
+  \item \textbf{Basic Probability Rules}
+  \begin{itemize}
+    \item $0 \le P(A) \le 1$ for any event $A$
+    \item The probabilities of all outcomes in the sample space sum to 1
+  \end{itemize}
+
+  \item \textbf{Complements}
+  \begin{itemize}
+    \item The complement of event $A$, denoted $A^c$, includes all outcomes not in $A$
+    \item Complement rule:
+    \[
+      P(A^c) = 1 - P(A)
+    \]
+  \end{itemize}
+
+
+  \item \textbf{Unions and Intersections}
+  \begin{itemize}
+    \item Intersection: $A \cap B$ (both $A$ and $B$ occur)
+    \item Union: $A \cup B$ ($A$ or $B$ or both occur)
+  \end{itemize}
+
+  \item \textbf{Mutually Exclusive Events}
+  \begin{itemize}
+    \item Two events are mutually exclusive if they share no outcomes
+    \item If $A$ and $B$ are mutually exclusive:
+    \[
+      P(A \cup B) = P(A) + P(B)
+    \]
+  \end{itemize}
+
+  
+  \item \textbf{Addition Rule (OR)}
+  \begin{itemize}
+      \item 
+For any two events $A$ and $B$,
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B).
+\]
+
+    \item If $A$ and $B$ are \textbf{mutually exclusive} (cannot occur together, i.e. $P(A \cap B) = 0$), then
+\[
+P(A \cup B) = P(A) + P(B).
+\]
+  \end{itemize}
+
+  \item \textbf{Decomposition of an Event}
+    Any event $A$ can be written as the union of two disjoint events:
+    \[
+    A = (A \cap B) \cup (A \cap B^c).
+    \]
+    
+    Since $(A \cap B)$ and $(A \cap B^c)$ are mutually exclusive,
+    \[
+    P(A) = P(A \cap B) + P(A \cap B^c).
+    \]
+
+
+
+  \item \textbf{Conditional Probability}
+  \begin{itemize}
+    \item The probability of $A$ given $B$ is:
+    \[
+      P(A|B) = \frac{P(A \cap B)}{P(B)}
+    \]
+    \item The ``given'' event always appears in the denominator
+  \end{itemize}
+
+  \item \textbf{Multiplication Rule(AND)}
+  \begin{itemize}
+    \item  For any two events $A$ and $B$,
+    \[P(A \cap B) = P(A \mid B)\,P(B).\]
+    \itme If $A$ and $B$ are \textbf{independent}, then
+    \[P(A \cap B) = P(A)\,P(B).\]
+  \end{itemize}
+
+  \item \textbf{Independent Events}
+  \begin{itemize}
+    \item Events $A$ and $B$ are independent if one does not affect the probability of the other
+    \item Equivalent conditions:
+    \begin{itemize}
+      \item $P(A|B) = P(A)$
+      \item $P(B|A) = P(B)$
+      \item $P(A \cap B) = P(A)P(B)$
+    \end{itemize}
+  \end{itemize}
+  
+
+
+  \item \textbf{At Least One Events}
+  \begin{itemize}
+    \item These are often easiest to compute using complements:
+    \[
+      P(\textit{at least one}) = 1 - P(\textit{none})
+    \]
+  \end{itemize}
+
+
+
+  \item \textbf{Law of Total Probability:}
+  If $\{B_1, B_2, \dots, B_n\}$ is a partition of the sample space with $P(B_i)>0$, then
+    \[
+    P(A) = \sum_{i=1}^n P(A \mid B_i)\,P(B_i).
+    \]
+
+  \item \textbf{Tree Diagrams and Bayes' Rule}
+  \begin{itemize}
+    \item Tree diagrams help visualize conditional and joint probabilities
+    \item Bayes' Rule allows probability updates given new information
+  \end{itemize}
+\end{itemize}
+
+
+
+\end{document}
