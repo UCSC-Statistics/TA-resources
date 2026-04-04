@@ -4,6 +4,7 @@ This repository collects teaching materials, guides, and resources for UCSC Stat
 
 ## Quick Links
 - TA Wiki: https://github.com/UCSC-Statistics/TA-resources/wiki
+- Git + PR guide: https://github.com/UCSC-Statistics/TA-resources/wiki/How-to-update-this-manual
 - TA Wiki sandbox (for workshop practice): https://github.com/AntonioAPDL/ta-wiki-sandbox
 
 ## Repository Structure
@@ -26,4 +27,3 @@ If you are new to GitHub contributions, use the sandbox repository above to prac
 
 ## Maintainers
 TA Wiki Maintainers: Antonio, Andrew, Marcela
-
