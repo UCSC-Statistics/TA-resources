@@ -1,0 +1,98 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+/*-- custom.scss: STAT 5 Section Slides Theme --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+/*-- Base --*/
+.reveal {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  color: white;
+}
+
+.reveal .slide-background {
+  background-color: #1e3a5f;
+}
+
+/*-- Headings --*/
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: none;
+}
+
+.reveal h1 { font-size: 2.2em; }
+.reveal h2 { font-size: 1.5em; }
+.reveal h3 {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #5BC8DB;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.3em;
+}
+
+/*-- Slide title spacing --*/
+.reveal .slides section h2 {
+  margin-bottom: 1em;
+}
+
+/*-- Body text --*/
+.reveal p, .reveal li {
+  color: white;
+  line-height: 1.5;
+}
+
+/*-- Bullet lists --*/
+.reveal ul {
+  list-style: disc;
+  margin-left: 1.2em;
+}
+
+.reveal ul li { margin-bottom: 0.5em; }
+
+/*-- Accent colors --*/
+.gold  { color: #E5A823; }
+.teal  { color: #5BC8DB; }
+.white { color: white; }
+
+/*-- Two-column layout --*/
+.columns-custom {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+.col-left  { flex: 1; }
+.col-right { flex: 1; text-align: center; }
+.col-right img {
+  border-radius: 8px;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+/*-- Section label (above title on photo dividers) --*/
+.section-label {
+  display: inline-block;
+  border: 2px solid #5BC8DB;
+  color: #5BC8DB;
+  font-size: 0.45em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  margin-bottom: 0.5em;
+}
+
+/*-- Photo divider slides: dark overlay so text is readable --*/
+.photo-divider .reveal .slide-background-content {
+  filter: brightness(0.55);
+}
+
+/*-- Mermaid diagrams --*/
+.reveal .mermaid {
+  display: flex;
+  justify-content: center;
+}
