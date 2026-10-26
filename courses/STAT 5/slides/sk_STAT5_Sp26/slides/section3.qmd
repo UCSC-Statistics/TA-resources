@@ -1,0 +1,556 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    background-color: "#1e3a5f"
+    slide-number: false
+    controls: true
+    progress: false
+    transition: fade
+    width: 1400
+    height: 787
+---
+
+## {background-image="photos/noah_purifoy.jpeg" background-size="cover" background-opacity="0.65"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[STAT 5 SP 2026]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em;"}
+
+[SECTION 3]{style="font-size: 2.2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Agenda
+
+:::: {.columns}
+::: {.column width="55%"}
+- Discussion
+- Week 3 Review: Probability
+- Attendance Quiz
+- Worksheet 3
+:::
+::: {.column width="45%"}
+![](photos/noah_purifoy.jpeg){style="border-radius: 8px; width: 100%; max-height: 480px; object-fit: cover;"}
+:::
+::::
+
+---
+
+## Probability Is Hard
+
+<br>
+
+Most students struggle with probability the first time through
+
+<br>
+
+This is [**completely normal**]{.gold} — the intuition takes time to settle in
+
+<br>
+
+::: {style="color: rgba(255,255,255,0.65); font-size: 0.85em;"}
+*The only way through it: do problems, get stuck, try again*
+:::
+
+---
+
+## {background-image="photos/chi_river.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Week 3 Review]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[PROBABILITY]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## A New Question
+
+<br>
+
+So far — we've looked at data and [described]{.teal} what we saw
+
+<br>
+
+New question: [what mechanism could have *generated* this data?]{.gold}
+
+<br>
+
+::: {style="color: rgba(255,255,255,0.65); font-size: 0.85em;"}
+*Probability is the language for describing that mechanism*
+:::
+
+---
+
+## The Big Picture
+
+```{=html}
+<div style="display: flex; justify-content: center; margin-top: 1.8em;">
+  <div style="position: relative; width: 860px; height: 360px;">
+    <svg width="860" height="360" viewBox="0 0 860 360" role="img" aria-label="Loop from data generating process to observed data and back">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#E5A823"></polygon>
+        </marker>
+      </defs>
+      <path d="M250,128 C330,10 530,10 610,128" fill="none" stroke="#E5A823" stroke-width="3" marker-end="url(#arrowhead)"></path>
+      <path d="M610,232 C530,350 330,362 250,248" fill="none" stroke="#E5A823" stroke-width="3" marker-end="url(#arrowhead)"></path>
+      <text x="430" y="20" fill="#E5A823" text-anchor="middle" font-size="28" font-weight="600">probability</text>
+      <text x="430" y="352" fill="#E5A823" text-anchor="middle" font-size="28" font-weight="600">inference</text>
+    </svg>
+
+    <div style="position: absolute; top: 122px; left: 12px; background: rgba(91,200,219,0.15); border: 2px solid #5BC8DB; border-radius: 10px; padding: 1em 1.5em; text-align: center; min-width: 190px;">
+      <div style="color: #5BC8DB; font-weight: 600; font-size: 1.05em; line-height: 1.6;">Data Generating<br>Process</div>
+    </div>
+    <div style="position: absolute; top: 122px; right: 12px; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 1em 1.5em; text-align: center; min-width: 180px;">
+      <div style="color: white; font-weight: 600; font-size: 1.05em; line-height: 1.6;">Observed<br>Data</div>
+    </div>
+  </div>
+</div>
+<div style="text-align: center; margin-top: 2em; font-size: 0.7em; color: rgba(255,255,255,0.45);">
+  Weeks 1–4: described the data &nbsp;·&nbsp; This week: we start modeling the mechanism
+</div>
+```
+
+---
+
+## Why Probability?
+
+<br>
+
+Three questions probability helps us answer:
+
+<br>
+
+- [What outcomes are possible?]{.teal}
+- [How likely is each outcome?]{.teal}
+- [What changes if the process changes?]{.gold}
+
+---
+
+## Sample Space and Events
+
+<br>
+
+100 M&Ms in a jar:
+
+| Blue | Red | Yellow |
+|:----:|:---:|:------:|
+| 45   | 40  | 15     |
+
+<br>
+
+- [**Sample space**]{.teal} — all possible outcomes: {Blue, Red, Yellow}
+- [**Event**]{.teal} — any subset: {Blue, Yellow} = "not Red"
+- [**Complement**]{.gold} — everything *except* the event: $P(\text{not } A) = 1 - P(A)$
+
+---
+
+## One Draw
+
+<br>
+
+Two event examples:
+
+- Event $A$: draw a <span style="color:#E85D5D; font-weight:600;">Red</span> M&M
+- Event $B$: draw <span style="color:#5BC8DB; font-weight:600;">Blue</span> or <span style="color:#F6D743; font-weight:600;">Yellow</span>
+
+<br>
+
+```{=html}
+<div style="font-size: 1.05em; line-height: 1.6; margin-top: 0.2em;">
+  <div>P(A) = P(Red) = 0.40</div>
+  <div>P(B) = P(Blue or Yellow) = 0.45 + 0.15 = 0.60</div>
+</div>
+```
+
+---
+
+## Two Draws: Does the Process Change?
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+[With replacement]{.teal style="font-weight: 600;"}
+
+Put the M&M back before drawing again
+
+→ jar is the same each time
+
+→ draws are [**independent**]{.gold}
+:::
+::: {.column width="50%"}
+[Without replacement]{.teal style="font-weight: 600;"}
+
+Don't put it back
+
+→ jar changes after the first draw
+
+→ draws are [**not independent**]{.gold}
+:::
+::::
+
+<br>
+
+::: {style="text-align: center; font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+The mechanism you choose changes the probability
+:::
+
+---
+
+## Independence
+
+<br>
+
+[Key question:]{.gold style="font-weight: 600;"} Does knowing the first outcome change the probability of the second?
+
+<br>
+
+- Yes → [**dependent**]{.teal}
+- No → [**independent**]{.teal}
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+Independent ≠ mutually exclusive — these are *different* ideas
+:::
+
+---
+
+## Probability as a Polling Model
+
+<br>
+
+Suppose a congressional district has:
+
+| <span style="color:#5BC8DB; font-weight:600;">Democrats</span> | <span style="color:#E85D5D; font-weight:600;">Republicans</span> | <span style="color:#F6D743; font-weight:600;">Neither</span> |
+|:---------:|:-----------:|:-------:|
+| <span style="color:#5BC8DB; font-weight:600;">45%</span> | <span style="color:#E85D5D; font-weight:600;">40%</span> | <span style="color:#F6D743; font-weight:600;">15%</span> |
+
+<br>
+
+Loading an M&M jar with [these proportions]{.gold} models a phone poll
+
+→ one draw = one randomly contacted voter
+
+---
+
+## Sample Variability
+
+<br>
+
+If we call 100 voters — do we expect [exactly]{.teal} 45 to be Democrats?
+
+<br>
+
+[No.]{.gold style="font-size: 1.1em;"} We expect *close to* 45 — but not exactly
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+This is sample variability — it's expected, not an error in the model
+:::
+
+---
+
+## Bias Enters Through the Process
+
+<br>
+
+What if Democrats are less likely to answer the phone?
+
+<br>
+
+Then the M&M jar model is wrong — not because of variability, but because the [mechanism itself is flawed]{.gold}
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+This is nonresponse bias — a problem with how data are generated
+:::
+
+---
+
+## Union and Intersection
+
+<br>
+
+70% use Spotify · 15% use Apple Music
+
+<br>
+
+::: {style="font-size: 0.95em; line-height: 1.55;"}
+General rule:
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+No overlap:
+$0.70 + 0.15 = 0.85$
+
+10% overlap:
+$0.70 + 0.15 - 0.10 = 0.75$
+:::
+
+<br>
+
+::: {style="text-align: center; font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*(Venn diagram on board)*
+:::
+
+---
+
+## "At Least One" and the Complement
+
+<br>
+
+Two ways to get the same answer:
+
+<br>
+
+[Union (direct):]{.teal style="font-weight: 600;"} $P(A \cup B) = 0.70 + 0.15 - 0.10 = 0.75$
+
+[Complement (shortcut):]{.gold style="font-weight: 600;"} $1 - P(\text{neither}) = 1 - 0.25 = 0.75$
+
+<br>
+
+::: {style="font-size: 0.8em; color: rgba(255,255,255,0.65);"}
+Use the complement when *P(none)* is easier to compute than *P(at least one)* — e.g. independent events: $(1-p_1)(1-p_2)\cdots$
+:::
+
+---
+
+## What Conditioning Means
+
+<br>
+
+$P(A \mid B)$ = probability of $A$, given that [$B$ is already known]{.gold}
+
+<br>
+
+- Conditioning narrows the sample space to outcomes [where $B$ is true]{.teal}
+- If $B$ is relevant to $A$ → probability changes
+- If $B$ is irrelevant to $A$ → probability stays the same
+
+---
+
+## Conditional Probability
+
+<br>
+
+Wildfire risk $W$ in the Santa Cruz mountains (0–100) · Humidity $X$ known
+
+$X$ and $W$ have a [negative relationship]{.teal}
+
+<br>
+
+- Definition: $P(A \mid B)$ means probability of $A$ once $B$ is known
+- Compare: $P(W > 80 \mid X = 30\%)$ vs $P(W > 80 \mid X = 70\%)$
+
+<br>
+
+::: {style="text-align: center; font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*The condition tells us something relevant — so the probability shifts*
+:::
+
+---
+
+## {background-image="photos/chi_field.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Week 3 Review cont.]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[PROBABILITY DISTRIBUTIONS]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Recurring Patterns
+
+<br>
+
+Some random mechanisms appear over and over in nature
+
+→ statisticians give them names: [**probability distributions**]{.gold}
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+A distribution is a model for a generating process
+:::
+
+---
+
+## Variable Types
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+[Discrete]{.teal style="font-weight: 600;"}
+
+Takes whole number values
+
+- number of heads in 10 flips
+- number of Democrats called
+
+Distribution example from lecture:
+
+<span style="color:#E5A823; font-weight:600;">Binomial</span> (count of successes in $n$ trials)
+:::
+::: {.column width="50%"}
+[Continuous]{.teal style="font-weight: 600;"}
+
+Can take any value
+
+- height, weight, temperature
+- wildfire risk score
+
+Distribution example from lecture:
+
+<span style="color:#E5A823; font-weight:600;">Normal</span> (SAT/IQ-style bell-shaped measurements)
+:::
+::::
+
+---
+
+## A Familiar Shape
+
+<br>
+
+Many natural measurements cluster near a typical value — with fewer extremes
+
+<br>
+
+```{=html}
+<div style="display: flex; justify-content: center; margin-top: 0.6em; margin-bottom: 0.6em;">
+  <svg width="720" height="220" viewBox="0 0 720 220" role="img" aria-label="Normal distribution curve with mean and standard deviation markers">
+    <line x1="60" y1="180" x2="660" y2="180" stroke="rgba(255,255,255,0.55)" stroke-width="2"></line>
+    <path d="M90,180 C180,180 220,45 360,45 C500,45 540,180 630,180" fill="none" stroke="#5BC8DB" stroke-width="4"></path>
+    <line x1="360" y1="180" x2="360" y2="52" stroke="#E5A823" stroke-width="2.5"></line>
+    <line x1="270" y1="180" x2="270" y2="102" stroke="rgba(255,255,255,0.45)" stroke-width="2"></line>
+    <line x1="450" y1="180" x2="450" y2="102" stroke="rgba(255,255,255,0.45)" stroke-width="2"></line>
+    <text x="360" y="198" fill="#E5A823" text-anchor="middle" font-size="15">mean</text>
+    <text x="270" y="198" fill="rgba(255,255,255,0.75)" text-anchor="middle" font-size="14">-1 SD</text>
+    <text x="450" y="198" fill="rgba(255,255,255,0.75)" text-anchor="middle" font-size="14">+1 SD</text>
+  </svg>
+</div>
+```
+
+<br>
+
+- [68%]{.gold} of values fall within 1 SD of the mean
+- [95%]{.gold} within 2 SDs · [99.7%]{.gold} within 3 SDs
+
+---
+
+## {background-image="photos/salt.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Attendance]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[QUIZ TIME]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Attendance Quiz {background-color="#1e3a5f"}
+
+```{=html}
+<div style="display: flex; gap: 2em; align-items: flex-start; height: 85%;">
+  <div style="flex: 0 0 60%;">
+    <p style="font-size: 0.7em; color: rgba(255,255,255,0.55); margin-bottom: 1em;">
+      <em>Not graded on correctness — just scan in!</em>
+    </p>
+    <p style="font-size: 0.82em; margin-bottom: 0.9em;">
+      <span style="color: #E5A823; font-weight: 600;">Q1:</span>
+      We draw 2 M&Ms <em>without</em> replacement. Are the two draws independent? (yes / no) — explain why.
+    </p>
+    <p style="font-size: 0.82em; margin-bottom: 0.9em;">
+      <span style="color: #E5A823; font-weight: 600;">Q2:</span>
+      70% use Spotify, 15% use Apple Music, 10% use both. What is P(uses at least one)?
+      &nbsp; (a) 85% &nbsp; (b) 80% &nbsp; (c) 75% &nbsp; (d) 70%
+    </p>
+    <p style="font-size: 0.82em;">
+      <span style="color: #E5A823; font-weight: 600;">Q3:</span>
+      Humidity is negatively related to wildfire risk. Which probability is larger:
+      P(high risk | humidity = 20%) or P(high risk | humidity = 80%)? Why?
+    </p>
+  </div>
+  <div style="flex: 0 0 36%; text-align: center; padding-top: 0.5em;">
+    <p style="font-size: 0.65em; color: rgba(255,255,255,0.75); margin-bottom: 0.5em;">
+      Add your course attendance procedure here.
+    </p>
+  </div>
+</div>
+```
+
+---
+
+## {background-image="photos/devils-golf-course.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Worksheet 3]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[LET'S GET TO WORK]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Start Here: Problem 4
+
+<br>
+
+[Start with Problem 4]{.gold style="font-weight: 600;"} — it connects directly to what we just reviewed
+
+<br>
+
+Open the [**data2**]{.teal} tab first and scroll through
+
+- What do you notice about the **island** column?
+- If researchers only sampled from Torgersen Island — what changes?
+
+<br>
+
+::: {style="font-size: 0.8em; color: rgba(255,255,255,0.6);"}
+*Problem 1 is great review at home — histogram + skewness from last week*
+:::
+
+---
+
+## Regression as an EDA Tool
+
+<br>
+
+We haven't covered regression in section yet — here's the key idea:
+
+<br>
+
+[Regression describes a linear pattern in the data]{.gold}
+
+<br>
+
+- [Slope:]{.teal} for 1-unit increase in x, y changes by ___ *on average*
+- [Intercept:]{.teal} predicted y when x = 0 *(ask: is x = 0 realistic here?)*
+- [R²:]{.teal} proportion of variation in y explained by x
+
+<br>
+
+::: {style="font-size: 0.8em; color: rgba(255,255,255,0.6);"}
+*Description, not causation*
+:::
+
+---
+
+## Tips: Problems 2–3
+
+<br>
+
+- [Explanatory → x-axis]{.teal} · Response → y-axis
+- [Residual]{.teal} = actual − predicted *(order matters)*
+- High R² ≠ causation — it just means the linear fit is good
+- Check the intercept: does x = 0 make sense in this context?
+
+<br>
+
+[Google Sheets:]{.gold} `=SLOPE(y_range, x_range)` &nbsp; `=INTERCEPT(y_range, x_range)`

@@ -1,0 +1,398 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    background-color: "#1e3a5f"
+    slide-number: false
+    controls: true
+    progress: false
+    transition: fade
+    width: 1400
+    height: 787
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+
+theme_section <- function() {
+  theme_minimal(base_size = 18) +
+  theme(
+    plot.background  = element_rect(fill = "#1e3a5f", color = NA),
+    panel.background = element_rect(fill = "#1e3a5f", color = NA),
+    panel.grid.major = element_line(color = "#ffffff22"),
+    panel.grid.minor = element_blank(),
+    text             = element_text(color = "white"),
+    axis.text        = element_text(color = "#cccccc"),
+    plot.title       = element_text(color = "#E5A823", size = 20, face = "bold")
+  )
+}
+```
+
+## {background-image="photos/IMG_5340.jpeg" background-size="cover" background-opacity="0.65"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[STAT 5 SP 2026]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em;"}
+
+[SECTION 8]{style="font-size: 2.2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+
+[Exam 2 Review]{style="font-size: 1.1em; color: rgba(255,255,255,0.7); display: block; margin-top: 0.3em;"}
+:::
+
+---
+
+## Agenda
+
+:::: {.columns}
+::: {.column width="55%"}
+- Exam logistics
+- Discrete random variables review
+- Hypothesis testing review
+- Practice quiz (15 min)
+- Attendance + quiz review (15 min)
+:::
+::: {.column width="45%"}
+![](photos/IMG_5340.jpeg){style="border-radius: 8px; width: 100%; max-height: 480px; object-fit: cover;"}
+:::
+::::
+
+---
+
+## Exam 2: Friday, May 29
+
+<br>
+
+- 16 MC (4 pts each) + 3 FR (36 pts) + 1 bonus MC
+- 50 minutes, closed book
+- Formula sheet + z-table provided
+- [Walk students through what's on the formula sheet]{.gold}
+
+<br>
+
+::: {style="text-align: center;"}
+[The review questions are your best study resource]{.teal} --- they match the exam format closely
+:::
+
+---
+
+## {background-image="photos/IMG_4044.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Review]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[DISCRETE RANDOM VARIABLES]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Discrete Random Variables
+
+<br>
+
+A [discrete random variable]{.gold} takes a finite (or countable) number of values. Its probability distribution is a table:
+
+<br>
+
+| $x$ | $x_1$ | $x_2$ | $\cdots$ | $x_k$ |
+|:---:|:---:|:---:|:---:|:---:|
+| $P(x)$ | $p_1$ | $p_2$ | $\cdots$ | $p_k$ |
+
+<br>
+
+[Validity:]{.teal style="font-weight: 600;"} every $P(x)$ between 0 and 1, and all probabilities sum to 1
+
+---
+
+## $E(X)$ and $\sigma$
+
+<br>
+
+[Expected value]{.gold style="font-weight: 600;"} (long-run average):
+
+$$E(X) = \mu = \sum x \cdot P(x)$$
+
+<br>
+
+[Standard deviation]{.gold style="font-weight: 600;"} (spread around the mean):
+
+$$\sigma = \sqrt{\sum (x - \mu)^2 \cdot P(x)}$$
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*$E(X)$ is NOT the most likely value --- it's the average over many trials*
+:::
+
+---
+
+## The Voter Example, Revisited
+
+Remember the M&M jar? Call [4]{.gold} voters at random ($p = 0.45$ Democrat).
+
+<br>
+
+$X$ = number of Democrats
+
+| $x$ | 0 | 1 | 2 | 3 | 4 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| $P(x)$ | 0.091 | 0.300 | 0.368 | 0.200 | 0.041 |
+
+<br>
+
+[Try it:]{.teal style="font-weight: 600;"} Compute $E(X) = \sum x \cdot P(x)$ from the table.
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*Check: for binomial, there's a shortcut --- $E(X) = np = 4(0.45) = 1.80$*
+:::
+
+---
+
+## {background-image="photos/IMG_4417.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Review]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[HYPOTHESIS TESTING]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+
+[Last week: setup, test statistic, p-value, decision. Today: errors + full walkthrough.]{style="font-size: 0.85em; color: rgba(255,255,255,0.75); display: block; margin-top: 0.6em;"}
+:::
+
+---
+
+## The Big Picture
+
+<br>
+
+[Hypothesis testing:]{.gold style="font-weight: 600;"} assume something about $p$, then check if the data [contradict]{.teal} that assumption
+
+<br>
+
+Like a trial: start by assuming [innocent]{.teal} ($H_0$), only convict (reject) if the evidence is [overwhelming]{.gold}
+
+---
+
+## The 5-Step Procedure
+
+<br>
+
+| Step | What you do |
+|:---:|:---|
+| 1 | State $H_0$ and $H_1$ (always about $p$, never $\hat{p}$) |
+| 2 | Set $\alpha$ (significance level) |
+| 3 | Check conditions: $np_0(1-p_0) \geq 10$ |
+| 4 | Compute test statistic: $Z = \dfrac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}}$ |
+| 5 | Find the p-value, compare to $\alpha$, state conclusion [in context]{.teal} |
+
+---
+
+## What Can Go Wrong?
+
+<br>
+
+We make a decision (reject or don't reject) --- but we could be [wrong]{.gold}
+
+<br>
+
+Two ways to be wrong:
+
+- We reject $H_0$... but $H_0$ was actually true
+- We don't reject $H_0$... but $H_0$ was actually false
+
+<br>
+
+These have names...
+
+---
+
+## Type I & Type II Errors
+
+<br>
+
+```{=html}
+<div style="display: flex; justify-content: center; margin-bottom: 1.2em;">
+<table style="border-collapse: collapse; font-size: 1.05em; color: white; width: 70%;">
+  <tr>
+    <td style="border: none;"></td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #E5A823; font-weight: 600;">H₀ True</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #E5A823; font-weight: 600;">H₀ False</td>
+  </tr>
+  <tr>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; color: #5BC8DB; font-weight: 600;">Do Not Reject H₀</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #66cc66;">✓ Correct</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #ff7777;">Type II Error (β)</td>
+  </tr>
+  <tr>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; color: #5BC8DB; font-weight: 600;">Reject H₀</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #ff7777;">Type I Error (α)</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.6em 1.2em; text-align: center; color: #66cc66;">✓ Correct</td>
+  </tr>
+</table>
+</div>
+```
+
+- [Type I]{.gold}: reject $H_0$ when it's actually true — "false alarm"
+- [Type II]{.gold}: fail to reject $H_0$ when it's actually false — "missed detection"
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*On the exam: describe each error **in context** — don't just recite the definition*
+:::
+
+---
+
+## The Trial Analogy
+
+$H_0$: the defendant is innocent
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+[Type I: convict an innocent person]{.gold style="font-weight: 600;"}
+
+You reject $H_0$ (guilty verdict), but they were actually innocent
+
+<br>
+
+*Wrongful conviction*
+:::
+::: {.column width="50%"}
+[Type II: let a guilty person go free]{.gold style="font-weight: 600;"}
+
+You fail to reject $H_0$ (not guilty), but they were actually guilty
+
+<br>
+
+*Guilty person walks*
+:::
+::::
+
+<br>
+
+[The trade-off:]{.teal style="font-weight: 600;"} stricter standard of evidence (smaller $\alpha$) → fewer wrongful convictions, but more guilty people walk free
+
+---
+
+## Conclusion Language
+
+<br>
+
+```{=html}
+<div style="display: flex; gap: 2em; justify-content: center;">
+  <div style="background: rgba(229,168,35,0.15); border: 2px solid #E5A823; border-radius: 10px; padding: 1.2em 2em; text-align: center; flex: 0 0 42%;">
+    <div style="color: #E5A823; font-weight: 600; font-size: 1.05em; margin-bottom: 0.5em;">Reject H₀</div>
+    <div style="color: white; font-size: 0.85em;">"There <strong>is</strong> sufficient evidence that [context]."</div>
+  </div>
+  <div style="background: rgba(91,200,219,0.15); border: 2px solid #5BC8DB; border-radius: 10px; padding: 1.2em 2em; text-align: center; flex: 0 0 42%;">
+    <div style="color: #5BC8DB; font-weight: 600; font-size: 1.05em; margin-bottom: 0.5em;">Do Not Reject H₀</div>
+    <div style="color: white; font-size: 0.85em;">"There <strong>is not</strong> sufficient evidence that [context]."</div>
+  </div>
+</div>
+```
+
+<br>
+
+::: {style="text-align: center;"}
+"Do not reject" $\neq$ "accept" — just like [not guilty]{.teal} $\neq$ innocent
+:::
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65); text-align: center;"}
+*Never say "we accept $H_0$" or "we reject $H_1$" on the exam*
+:::
+
+---
+
+## Review Q39: Vaccination
+
+<br>
+
+In the previous year, [50%]{.gold} of a city's population was vaccinated against the flu. A health organization claims this proportion has [**decreased**]{.teal}. A random sample of [400]{.gold} people is selected, and [180]{.gold} are vaccinated.
+
+<br>
+
+Test the claim at $\alpha = 0.05$.
+
+<br>
+
+[Try parts (a) and (b) now:]{.teal style="font-weight: 600;"}
+
+- (a) What is the parameter of interest?
+- (b) State $H_0$ and $H_1$
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*Hint: "decreased" tells you the direction of $H_1$*
+:::
+
+---
+
+## {background-image="photos/IMG_5343.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[15 minutes]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[PRACTICE QUIZ]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+
+[7 MC + 1 free response --- matches the exam pacing]{style="font-size: 0.85em; color: rgba(255,255,255,0.75); display: block; margin-top: 0.6em;"}
+:::
+
+---
+
+## Attendance
+
+```{=html}
+<div style="display: flex; gap: 2em; align-items: flex-start; height: 85%;">
+  <div style="flex: 0 0 55%;">
+    <p style="font-size: 0.75em; color: rgba(255,255,255,0.55); margin-bottom: 1em;">
+      <em>Scan to mark attendance</em>
+    </p>
+    <p style="font-size: 0.85em; margin-bottom: 1.5em;">
+      <span style="color: #E5A823; font-weight: 600;">Quiz Solutions:</span><br>
+      <span style="font-size: 0.85em; color: rgba(255,255,255,0.7);">We'll go over the answers now. Check your work as we review.</span>
+    </p>
+  </div>
+  <div style="flex: 0 0 40%; text-align: center; padding-top: 0.5em;">
+    <p style="font-size: 0.65em; color: rgba(255,255,255,0.75);">Add your course attendance procedure here.</p>
+  </div>
+</div>
+```
+
+---
+
+## {background-image="photos/IMG_2883.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[On the board]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[QUIZ REVIEW]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+
+[Which questions do you want to go over?]{style="font-size: 0.85em; color: rgba(255,255,255,0.75); display: block; margin-top: 0.6em;"}
+:::
+
+---
+
+## Which $p$ Goes in the SE?
+
+<br>
+
+$$SE = \sqrt{\frac{p(1-p)}{n}}$$
+
+<br>
+
+| Context | SE uses... | Why? |
+|:---|:---:|:---|
+| Sampling distribution | $p$ | We [know]{.teal} the true proportion |
+| Confidence interval | $\hat{p}$ | We're [estimating]{.teal} — don't know $p$ |
+| Hypothesis test | $p_0$ | We [assume]{.teal} $H_0$ is true |
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*The formula is always the same --- the reasoning changes*
+:::

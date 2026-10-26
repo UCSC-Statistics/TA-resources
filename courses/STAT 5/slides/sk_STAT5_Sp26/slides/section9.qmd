@@ -1,0 +1,293 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    background-color: "#1e3a5f"
+    slide-number: false
+    controls: true
+    progress: false
+    transition: fade
+    width: 1400
+    height: 787
+---
+
+```{r}
+#| include: false
+library(ggplot2)
+
+theme_section <- function() {
+  theme_minimal(base_size = 18) +
+  theme(
+    plot.background  = element_rect(fill = "#1e3a5f", color = NA),
+    panel.background = element_rect(fill = "#1e3a5f", color = NA),
+    panel.grid.major = element_line(color = "#ffffff22"),
+    panel.grid.minor = element_blank(),
+    text             = element_text(color = "white"),
+    axis.text        = element_text(color = "#cccccc"),
+    plot.title       = element_text(color = "#E5A823", size = 20, face = "bold")
+  )
+}
+```
+
+## {background-image="photos/IMG_4875.jpeg" background-size="cover" background-opacity="0.65"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[STAT 5 SP 2026]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em;"}
+
+[SECTION 9]{style="font-size: 2.2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+
+:::
+
+---
+
+## {background-image="photos/IMG_4947.jpeg" background-size="cover" background-opacity="0.5"}
+
+::: {style="position: absolute; top: 18%; left: 5%; max-width: 80%;"}
+[Thank you for a great quarter.]{style="font-size: 2em; font-weight: 300; color: white; line-height: 1.4;"}
+
+[It's been fun working with all of you.]{style="font-size: 1.1em; color: rgba(255,255,255,0.7); display: block; margin-top: 0.8em;"}
+:::
+
+---
+
+## Before We Start
+
+<br>
+
+[There is no final exam.]{.gold style="font-size: 1.1em; font-weight: 600;"} Just a take-home final worksheet (10% of your grade).
+
+<br>
+
+If you need time to study for other finals, feel free to head out.
+
+<br>
+
+For those staying --- ~20 minute overview of [Ch 10]{.gold} (two-proportion inference), material you'll need on the take-home worksheet.
+
+---
+
+## Attendance
+
+```{=html}
+<div style="display: flex; gap: 2em; align-items: flex-start;">
+  <div style="flex: 0 0 55%;">
+    <p style="font-size: 0.95em; margin-bottom: 1.2em;">
+      <span style="color: #5BC8DB; font-weight: 600;">To do now:</span><br>
+      1. Scan the QR &rarr; attendance poll<br>
+      2. Group photo!
+    </p>
+  </div>
+  <div style="flex: 0 0 35%; text-align: center; padding-top: 0.5em;">
+    <p style="font-size: 0.65em; color: rgba(255,255,255,0.75);">Add your course attendance procedure here.</p>
+  </div>
+</div>
+```
+
+---
+
+## Why Compare Two Groups?
+
+<br>
+
+Most interesting questions are [comparative]{.gold}:
+
+<br>
+
+- Does taking aspirin daily reduce the rate of heart attacks?
+- Is the graduation rate different for transfer vs. first-year admits?
+- Do handwritten notes lead to better exam pass rates than laptop notes?
+
+<br>
+
+::: {style="text-align: center;"}
+The parameter of interest: [$p_1 - p_2$]{.teal style="font-size: 1.2em;"}
+:::
+
+---
+
+## The Setup
+
+<br>
+
+Two independent random samples:
+
+<br>
+
+| | Group 1 | Group 2 |
+|:---|:---:|:---:|
+| Sample size | $n_1$ | $n_2$ |
+| Successes | $x_1$ | $x_2$ |
+| Sample proportion | $\hat{p}_1 = x_1/n_1$ | $\hat{p}_2 = x_2/n_2$ |
+
+<br>
+
+[Goal:]{.teal style="font-weight: 600;"} make inferences about $p_1 - p_2$ using $\hat{p}_1 - \hat{p}_2$
+
+<br>
+
+::: {style="font-size: 0.85em; color: rgba(255,255,255,0.65);"}
+*Same logic as one-proportion inference --- the tools just get a second subscript*
+:::
+
+---
+
+## One-Prop CI
+
+[What it does:]{.teal style="font-weight: 600;"} estimate the true proportion $p$ by building a range of plausible values around $\hat{p}$
+
+$$\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+
+SE uses [$\hat{p}$]{.gold} because we're [estimating]{.teal} --- we don't know $p$
+
+---
+
+## Two-Prop CI
+
+[What it does:]{.teal style="font-weight: 600;"} estimate the difference $p_1 - p_2$ by building a range of plausible values around $\hat{p}_1 - \hat{p}_2$
+
+$$(\hat{p}_1 - \hat{p}_2) \pm z_{\alpha/2} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$$
+
+Each group keeps its own $\hat{p}$ in the SE --- just like one-prop CI uses $\hat{p}$
+
+<br>
+
+[Is 0 in the interval?]{.teal style="font-weight: 600;"} &ensp;All positive → $p_1 > p_2$. &ensp;All negative → $p_1 < p_2$. &ensp;Contains 0 → can't conclude a difference at this confidence level.
+
+---
+
+## One-Prop HT
+
+[What it does:]{.teal style="font-weight: 600;"} test whether $p$ equals a claimed value $p_0$
+
+- $H_0$: $p = p_0$ &ensp;(the claim is true)
+- $H_1$: $p \neq p_0$ &ensp;(or $<$ or $>$)
+
+$$z_0 = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}}$$
+
+SE uses [$p_0$]{.gold} because we [assume]{.teal} $H_0$ is true
+
+---
+
+## Two-Prop HT: The Pooled Proportion
+
+<br>
+
+$H_0$: $p_1 = p_2$ --- under the null, we believe the two groups have the [same]{.gold} true proportion
+
+<br>
+
+If they share the same $p$, our best estimate of that common value uses [all the data]{.teal}:
+
+$$\hat{p} = \frac{x_1 + x_2}{n_1 + n_2}$$
+
+This is called the [pooled proportion]{.gold} --- we combine ("pool") both samples into one because $H_0$ says there's no difference between them
+
+---
+
+## Two-Prop HT: Test Statistic
+
+<br>
+
+$$z_0 = \frac{(\hat{p}_1 - \hat{p}_2)}{\sqrt{\hat{p}(1 - \hat{p})\left(\dfrac{1}{n_1} + \dfrac{1}{n_2}\right)}}$$
+
+where $\hat{p} = \dfrac{x_1 + x_2}{n_1 + n_2}$ (the pooled proportion)
+
+<br>
+
+- Same p-value logic as one-prop (left / right / two-tailed)
+- Same conclusion language: "sufficient / not sufficient evidence that..."
+
+---
+
+## Decision Tree: Which Formula?
+
+<br>
+
+```{=html}
+<div style="text-align: center;">
+  <div style="background: rgba(91,200,219,0.2); border: 2px solid #5BC8DB; border-radius: 10px; padding: 0.5em 1.5em; display: inline-block; margin-bottom: 0.6em;">
+    <span style="color: #5BC8DB; font-weight: 600; font-size: 1.05em;">How many groups?</span>
+  </div>
+  <div style="color: rgba(255,255,255,0.4); font-size: 1.5em; margin-bottom: 0.4em;">&#x25BC;</div>
+  <div style="display: flex; gap: 3em; justify-content: center;">
+    <div style="flex: 0 0 38%;">
+      <div style="background: rgba(229,168,35,0.15); border: 2px solid #E5A823; border-radius: 10px; padding: 0.6em 1em; margin-bottom: 0.6em;">
+        <span style="color: #E5A823; font-weight: 600;">One Group</span><br>
+        <span style="font-size: 0.75em; color: rgba(255,255,255,0.55);">comparing to a claimed value</span>
+      </div>
+      <div style="display: flex; gap: 0.8em;">
+        <div style="flex: 1; background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.6em 0.5em; text-align: center;">
+          <div style="color: #5BC8DB; font-weight: 600; font-size: 0.9em;">CI</div>
+          <div style="font-size: 0.8em; color: white; margin-top: 0.3em;">SE uses <span style="color: #E5A823; font-weight: 600;">p&#x0302;</span></div>
+        </div>
+        <div style="flex: 1; background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.6em 0.5em; text-align: center;">
+          <div style="color: #5BC8DB; font-weight: 600; font-size: 0.9em;">HT</div>
+          <div style="font-size: 0.8em; color: white; margin-top: 0.3em;">SE uses <span style="color: #E5A823; font-weight: 600;">p&#x2080;</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 0 0 38%;">
+      <div style="background: rgba(229,168,35,0.15); border: 2px solid #E5A823; border-radius: 10px; padding: 0.6em 1em; margin-bottom: 0.6em;">
+        <span style="color: #E5A823; font-weight: 600;">Two Groups</span><br>
+        <span style="font-size: 0.75em; color: rgba(255,255,255,0.55);">comparing groups to each other</span>
+      </div>
+      <div style="display: flex; gap: 0.8em;">
+        <div style="flex: 1; background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.6em 0.5em; text-align: center;">
+          <div style="color: #5BC8DB; font-weight: 600; font-size: 0.9em;">CI</div>
+          <div style="font-size: 0.8em; color: white; margin-top: 0.3em;">SE uses <span style="color: #E5A823; font-weight: 600;">p&#x0302;&#x2081;, p&#x0302;&#x2082;</span></div>
+        </div>
+        <div style="flex: 1; background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.6em 0.5em; text-align: center;">
+          <div style="color: #5BC8DB; font-weight: 600; font-size: 0.9em;">HT</div>
+          <div style="font-size: 0.8em; color: white; margin-top: 0.3em;">SE uses <span style="color: #E5A823; font-weight: 600;">pooled p&#x0302;</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Master SE Table
+
+<br>
+
+```{=html}
+<div style="display: flex; justify-content: center;">
+<table style="border-collapse: collapse; font-size: 0.9em; color: white; width: 85%;">
+  <tr>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em;"></td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center; color: #E5A823; font-weight: 600;">Confidence Interval</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center; color: #E5A823; font-weight: 600;">Hypothesis Test</td>
+  </tr>
+  <tr>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; color: #5BC8DB; font-weight: 600;">One Proportion</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center;">
+      SE uses <span style="color: #E5A823; font-weight: 600;">p&#x0302;</span><br>
+      <span style="font-size: 0.8em; color: rgba(255,255,255,0.55);">estimating &mdash; don't know p</span>
+    </td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center;">
+      SE uses <span style="color: #E5A823; font-weight: 600;">p&#x2080;</span><br>
+      <span style="font-size: 0.8em; color: rgba(255,255,255,0.55);">assuming H&#x2080; is true</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; color: #5BC8DB; font-weight: 600;">Two Proportions</td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center;">
+      SE uses <span style="color: #E5A823; font-weight: 600;">p&#x0302;&#x2081;, p&#x0302;&#x2082;</span> separately<br>
+      <span style="font-size: 0.8em; color: rgba(255,255,255,0.55);">not assuming equality</span>
+    </td>
+    <td style="border: 1.5px solid rgba(255,255,255,0.3); padding: 0.7em 1em; text-align: center;">
+      SE uses <span style="color: #E5A823; font-weight: 600;">pooled p&#x0302;</span><br>
+      <span style="font-size: 0.8em; color: rgba(255,255,255,0.55);">H&#x2080; says p&#x2081; = p&#x2082;</span>
+    </td>
+  </tr>
+</table>
+</div>
+```
+
+<br>
+
+::: {style="text-align: center;"}
+[The formula is always $\sqrt{p(1-p)/n}$]{.teal style="font-weight: 600;"} --- the reasoning about [which $p$]{.gold} changes
+:::

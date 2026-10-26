@@ -1,0 +1,551 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    background-color: "#1e3a5f"
+    slide-number: false
+    controls: true
+    progress: false
+    transition: fade
+    width: 1400
+    height: 787
+---
+
+## {background-image="photos/IMG_0608.jpeg" background-size="cover" background-opacity="0.65"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[STAT 5 SP 2026]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em;"}
+
+[SECTION 4]{style="font-size: 2.2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Agenda
+
+:::: {.columns}
+::: {.column width="55%"}
+- Regression review (5 min)
+- Multiplication rule + conditional probability + contingency tables (15 min)
+- **Mini-practice exam** — printed (25 min)
+- Attendance
+- Go over FR solutions
+:::
+::: {.column width="45%"}
+![](photos/IMG_0608.jpeg){style="border-radius: 8px; width: 100%; max-height: 480px; object-fit: cover;"}
+:::
+::::
+
+---
+
+## Before the Exam
+
+<br>
+
+At minimum: work through **all** of the professor's review questions
+
+[First do it without any notes or slides.]{.gold}
+
+<br>
+
+Then go back: what **type** of question were you repeatedly stuck on?
+
+[I would prioritize those topics for studying.]{.teal}
+
+---
+
+## {background-image="photos/IMG_4044.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Block 1]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[REGRESSION REVIEW]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Worksheet 3, P2 — Penguins
+
+<br>
+
+**The Model:**
+$$\hat{y} = 389.6 + 49.2x$$
+
+where $x$ = flipper length (mm) and $\hat{y}$ = predicted body mass (g)
+
+Data range: 172–231 mm
+
+<br>
+
+**Key Interpretation:**
+
+[Slope (49.2):]{.teal} for **1 mm increase** in flipper length, body mass increases by 49.2 g on average
+
+[Change is what matters:]{.gold style="font-weight: 600;"} Δŷ = slope × Δx &nbsp;·&nbsp; we don't need the actual x value, only the change
+
+---
+
+## Extrapolation Warning
+
+<br>
+
+Generally speaking, do **NOT** apply a model to data that lies outside of what the model was fit on.
+
+<br>
+
+**Two critical factors:**
+
+1. [Range of data:]{.teal} was the x value in your data? (penguins: 172–231 mm) → don't predict for 20 mm
+
+2. [Who was sampled:]{.teal} what population is the model for? → don't use a penguin model for hawks
+
+
+---
+
+## {background-image="photos/IMG_5156.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Blocks 2–3]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[PROBABILITY]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## Multiplication Rule
+
+
+General rule is (works for dependent case):
+
+$$P(A \text{ and } B) = {\color{#E5A823}{P(A \mid B)}} \times P(B)$$
+
+If independent, knowing $B$ doesn't change $P(A)$ so... ${\color{#E5A823}{P(A \mid B)}} = {\color{#E5A823}{P(A)}}$.
+
+If independent:
+
+$$P(A \text{ and } B) = {\color{#E5A823}{P(A)}} \times P(B).$$
+
+## Common Misconception
+
+[Mutually exclusive]{.teal} ≠ [independent]{.gold}
+
+- [Mutually exclusive]{.teal} means the two events cannot both happen i.e.
+
+$$P(A \text{ and } B) = 0$$
+
+- [Independent]{.gold} means knowing $A$ doesn't change $P(B)$ so,
+
+$$P(A \mid B) = P(A)$$.
+
+
+---
+
+## Conditional Probability: The Formula
+
+<br>
+
+[Start with the multiplication rule:]{.teal}
+
+$$P(A \text{ and } B) = {\color{#E5A823}{P(A \mid B)}} \times P(B)$$
+
+
+[Rearrange to solve for]{.teal} ${\color{#E5A823}{P(A \mid B)}}$:
+
+$${\color{#E5A823}{P(A \mid B)}} = \frac{P(A \text{ and } B)}{P(B)}$$
+
+---
+
+## Contingency Tables: Titanic Passengers
+
+```{=html}
+<p style="font-size: 0.72em; color: rgba(255,255,255,0.55); margin: 0.3em 0 0.7em 0;">887 passengers · rows = ticket class · columns = survival status</p>
+<table style="border-collapse: collapse; width: 76%; font-size: 0.85em;">
+  <tr style="background: rgba(91,200,219,0.2); border-bottom: 2px solid #5BC8DB;">
+    <th style="padding: 0.4em 0.8em; text-align: left;"></th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Survived</th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Did not survive</th>
+    <th style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">Total</th>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">First class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">136</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">80</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">216</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">Second class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">87</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">97</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">184</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">Third class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">119</td>
+    <td style="padding: 0.4em 0.8em; text-align: center;">368</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">487</td>
+  </tr>
+  <tr style="background: rgba(229,168,35,0.08); border-top: 2px solid #E5A823;">
+    <td style="padding: 0.4em 0.8em; color: #E5A823; font-weight: 600;">Total</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">342</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">545</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">887</td>
+  </tr>
+</table>
+```
+
+---
+
+## Marginal Probability
+
+```{=html}
+<table style="border-collapse: collapse; width: 76%; font-size: 0.85em; margin-bottom: 0.9em;">
+  <tr style="background: rgba(91,200,219,0.2); border-bottom: 2px solid #5BC8DB;">
+    <th style="padding: 0.4em 0.8em; text-align: left;"></th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Survived</th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Did not survive</th>
+    <th style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">Total</th>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">First class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">136</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">80</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">216</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">Second class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">87</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">97</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">184</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">Third class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">119</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">368</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">487</td>
+  </tr>
+  <tr style="background: rgba(229,168,35,0.08); border-top: 2px solid #E5A823;">
+    <td style="padding: 0.4em 0.8em; color: #E5A823; font-weight: 600;">Total</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">342</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">545</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">887</td>
+  </tr>
+</table>
+<p style="font-size: 1.05em; margin-top: 0.8em;">
+  <span style="color:#5BC8DB; font-weight:600;">Marginal</span> = row or column total ÷ grand total
+</p>
+<p style="font-size: 1em; margin-top: 0.6em; color: rgba(255,255,255,0.85);">
+  P(2nd class) = 184/887
+</p>
+<p style="font-size: 1em; margin-top: 0.4em; color: rgba(255,255,255,0.85);">
+  P(did not survive) = 545/887
+</p>
+```
+
+---
+
+## Joint Probability
+
+```{=html}
+<table style="border-collapse: collapse; width: 76%; font-size: 0.85em; margin-bottom: 0.9em;">
+  <tr style="background: rgba(91,200,219,0.2); border-bottom: 2px solid #5BC8DB;">
+    <th style="padding: 0.4em 0.8em; text-align: left;"></th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Survived</th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Did not survive</th>
+    <th style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">Total</th>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600; color: rgba(255,255,255,0.35);">First class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">136</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">80</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.35);">216</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600; color: rgba(255,255,255,0.35);">Second class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">87</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">97</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.35);">184</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">Third class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; background: rgba(229,168,35,0.25); color: #E5A823; font-weight: 600;">119</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">368</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.35);">487</td>
+  </tr>
+  <tr style="background: rgba(229,168,35,0.08); border-top: 2px solid #E5A823;">
+    <td style="padding: 0.4em 0.8em; color: rgba(229,168,35,0.4); font-weight: 600;">Total</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.4);">342</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.4);">545</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #E5A823; font-weight: 600;">887</td>
+  </tr>
+</table>
+<p style="font-size: 1.05em; margin-top: 0.8em;">
+  <span style="color:#E5A823; font-weight:600;">Joint</span> = cell ÷ grand total
+</p>
+<p style="font-size: 1em; margin-top: 0.6em; color: rgba(255,255,255,0.85);">
+  P(3rd class AND survived) = 119/887
+</p>
+```
+
+---
+
+## Conditional Probability
+
+```{=html}
+<table style="border-collapse: collapse; width: 76%; font-size: 0.85em; margin-bottom: 0.9em;">
+  <tr style="background: rgba(91,200,219,0.2); border-bottom: 2px solid #5BC8DB;">
+    <th style="padding: 0.4em 0.8em; text-align: left;"></th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Survived</th>
+    <th style="padding: 0.4em 0.8em; text-align: center;">Did not survive</th>
+    <th style="padding: 0.4em 0.8em; text-align: center; color: #E5A823;">Total</th>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2); background: rgba(91,200,219,0.07);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600;">First class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; background: rgba(229,168,35,0.25); color: #E5A823; font-weight: 600;">136</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.45);">80</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: #5BC8DB; font-weight: 600;">216</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600; color: rgba(255,255,255,0.35);">Second class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">87</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">97</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.35);">184</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.4em 0.8em; font-weight: 600; color: rgba(255,255,255,0.35);">Third class</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">119</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(255,255,255,0.35);">368</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.35);">487</td>
+  </tr>
+  <tr style="background: rgba(229,168,35,0.08); border-top: 2px solid #E5A823;">
+    <td style="padding: 0.4em 0.8em; color: rgba(229,168,35,0.4); font-weight: 600;">Total</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.4);">342</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.4);">545</td>
+    <td style="padding: 0.4em 0.8em; text-align: center; color: rgba(229,168,35,0.4);">887</td>
+  </tr>
+</table>
+<p style="font-size: 1.05em; margin-top: 0.8em;">
+  <strong>Conditional</strong> = cell ÷ row (or column) total — "given" restricts the sample space
+</p>
+<p style="font-size: 1em; margin-top: 0.6em; color: rgba(255,255,255,0.85);">
+  P(survived | 1st class) = <span style="color:#E5A823; font-weight:600;">136</span> / <span style="color:#5BC8DB; font-weight:600;">216</span>
+</p>
+```
+
+---
+
+## {background-image="photos/IMG_4417.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Block 4]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[MINI-PRACTICE EXAM]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+
+
+## General Exam Tip
+
+<br>
+
+::: {style="text-align: center; margin-top: 1.5em; font-size: 1.5em;"}
+Showing your thought process clearly and neatly is
+
+[WAY MORE]{.gold} important than
+
+getting the right number.
+:::
+
+---
+
+## Mini-Practice Exam
+
+<br>
+
+:::: {.columns}
+::: {.column width="60%"}
+- [4 multiple choice]{.teal}
+- [2 free response]{.teal}
+- Formula sheet is printed on the exam
+:::
+::: {.column width="40%"}
+[**25 minutes**]{.gold style="font-size: 1.5em; font-weight: 600;"}
+
+Work independently
+
+Show all work on FR
+:::
+::::
+<br>
+
+---
+
+
+## Attendance {background-color="#1e3a5f"}
+
+```{=html}
+<div style="text-align: center; padding-top: 1.5em;">
+  <p style="font-size: 0.85em; color: rgba(255,255,255,0.75); margin-bottom: 1em;">
+    Add your course attendance or formative-assessment procedure here.
+  </p>
+</div>
+```
+
+---
+
+## {background-image="photos/mendocino.jpeg" background-size="cover" background-opacity="0.55"}
+
+::: {style="position: absolute; top: 8%; left: 5%;"}
+[Block 6]{.teal style="font-size: 0.65em; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4em; border: 1.5px solid #5BC8DB; padding: 0.2em 0.6em; display: inline-block;"}
+
+[SOLUTIONS]{style="font-size: 2em; font-weight: 300; letter-spacing: 0.08em; color: white;"}
+:::
+
+---
+
+## FR1 (a) — Interpreting the Intercept
+
+$\hat{y} = 3.55 + 0.38x$ &nbsp;&nbsp; (weight in lbs → diastolic BP in mmHg)
+
+Data range: 178–267 lbs
+
+<br>
+
+**Is it appropriate to interpret 3.55?**
+
+[No — NOT appropriate]{.gold}
+
+The intercept would be: predicted BP when weight = 0 lbs
+
+- Weight of 0 lbs is [impossible]{.teal}
+- It's [far outside]{.teal} the data range (178–267 lbs)
+- This would be [extrapolation]{.gold}
+
+---
+
+## FR1 (b) — Using for Fourth Graders
+
+**Should we use this model to predict BP for fourth graders?**
+
+[No]{.gold}
+
+- Model was fit on [middle-aged men]{.teal} weighing 178–267 lbs
+- Fourth graders are a [different population]{.teal}
+- Their weights (~60–100 lbs) [fall outside the training range]{.gold}
+- Applying it would be [extrapolation]{.gold}
+
+---
+
+## FR1 (c) — Change in Prediction
+
+**Alonzo weighs 190–210 lbs. He loses 20 pounds. What's the predicted change in BP?**
+
+<br>
+
+Use the formula: Δŷ = slope × Δx
+
+$$\Delta\hat{y} = 0.38 \times (-20) = -7.60 \text{ mmHg}$$
+
+<br>
+
+**Interpretation:** Losing 20 lbs is associated with a predicted **decrease of 7.60 mmHg** in diastolic BP
+
+::: {style="font-size: 0.75em; color: rgba(255,255,255,0.7);"}
+Note: We only need the change in x, not his exact weight
+:::
+
+---
+
+## FR2 (a) — Joint Probability
+
+BRFSS survey: health status × insurance coverage (n = 20,000)
+
+```{=html}
+<table style="border-collapse: collapse; width: 100%; font-size: 0.70em; margin-top: 0.4em; margin-bottom: 0.8em;">
+  <tr style="background: rgba(91,200,219,0.2); border-bottom: 2px solid #5BC8DB;">
+    <th style="padding: 0.3em 0.6em; text-align: left;"></th>
+    <th style="padding: 0.3em 0.6em; text-align: center;">Excellent</th>
+    <th style="padding: 0.3em 0.6em; text-align: center;">Very good</th>
+    <th style="padding: 0.3em 0.6em; text-align: center;">Good</th>
+    <th style="padding: 0.3em 0.6em; text-align: center;">Fair</th>
+    <th style="padding: 0.3em 0.6em; text-align: center;">Poor</th>
+    <th style="padding: 0.3em 0.6em; text-align: center; color: #E5A823;">Total</th>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.3em 0.6em; font-weight: 600;">No coverage</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #5BC8DB; font-weight:600;">459</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">727</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">854</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">385</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">99</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823; font-weight:600;">2,524</td>
+  </tr>
+  <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <td style="padding: 0.3em 0.6em; font-weight: 600;">Has coverage</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">4,198</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">6,245</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">4,821</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">1,634</td>
+    <td style="padding: 0.3em 0.6em; text-align: center;">578</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823; font-weight:600;">17,476</td>
+  </tr>
+  <tr style="background: rgba(229,168,35,0.08); border-top: 2px solid #E5A823;">
+    <td style="padding: 0.3em 0.6em; color: #E5A823; font-weight: 600;">Total</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823; font-weight:600;">4,657</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823;">6,972</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823;">5,675</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823;">2,019</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823;">677</td>
+    <td style="padding: 0.3em 0.6em; text-align: center; color: #E5A823; font-weight:600;">20,000</td>
+  </tr>
+</table>
+```
+
+<br>
+
+**Question:** P(excellent health **AND** no coverage)?
+
+<br>
+
+[Use joint: cell ÷ grand total]{.teal}
+
+$$P(\text{excellent AND no coverage}) = \frac{459}{20,000}$$
+
+---
+
+## FR2 (b) — Addition Rule
+
+**Question:** P(excellent health **OR** no coverage)?
+
+<br>
+
+[Use addition rule:]{.teal}
+
+$$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)$$
+
+$$P(\text{excellent OR no coverage}) = \frac{4,657}{20,000} + \frac{2,524}{20,000} - \frac{459}{20,000} = \frac{6,722}{20,000}$$
+
+<br>
+
+::: {style="font-size: 0.80em; color: rgba(255,255,255,0.6);"}
+Remember to subtract the intersection — don't double-count the 459
+:::
+
+---
+
+## FR2 (c) — Conditional Probability
+
+**Question:** P(excellent health, **given** no coverage)?
+
+<br>
+
+[Use conditional: "given no coverage" → restrict to that row]{.teal}
+
+$$P(\text{excellent | no coverage}) = \frac{459}{2,524}$$
+
+<br>
+
+::: {style="font-size: 0.80em; color: rgba(255,255,255,0.6);"}
+The denominator is the row total (2,524), not the grand total (20,000)
+:::
